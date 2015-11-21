@@ -384,6 +384,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("goBuiltins", "00bfff", "", "")
 	call <SID>X("goStruct", "ff531a", "", "")
 	call <SID>X("goStructDef", "ff531a", "", "")
+	call <SID>X("goMethod", "ccff00", "", "")
 
 	" Lua Highlighting
 	call <SID>X("luaStatement", s:purple, "", "")
