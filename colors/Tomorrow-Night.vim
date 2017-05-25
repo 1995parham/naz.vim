@@ -1,409 +1,376 @@
-" Tomorrow Night - Full Colour and 256 Colour
-" http://chriskempson.com
-"
-" Hex colour conversion functions borrowed from the theme "Desert256""
-" Some change in color hex code done by Parham Alvani(parham.alvani@gmail.com)
-" Adding some features in c highlighting by Parham
-" Alvani(parham.alvani@gmail.com)
+" In The Name Of God
+" File:         Tomorrow-Night.vim
+" Last Change:	2017 May 25
+" Maintainer:	Parham Alvani <user.email>
 
-" Default GUI Colours
-let s:foreground = "c5c8c6"
-let s:background = "1d1f21"
-let s:selection = "373b41"
-let s:line = "282a2e"
-let s:comment = "969896"
-let s:red = "cc6666"
-let s:orange = "ff8100"
-let s:yellow = "e5e500"
-let s:green = "7cfc00"
-let s:aqua = "00ffff"
-let s:blue = "198cff"
-let s:purple = "ee82ee"
-let s:window = "4d5057"
 
-" Console 256 Colours
-if !has("gui_running")
-	let s:background = "303030"
-	let s:window = "5e5e5e"
-	let s:line = "3a3a3a"
-	let s:selection = "585858"
-end
+" Initialisation
+" --------------
 
-hi clear
-syntax reset
+if !has("gui_running") && &t_Co < 256
+	finish
+endif
 
-let g:colors_name = "Tomorrow-Night"
+if !exists("g:tomorrow_night_gui_italic")
+	let g:tomorrow_night_gui_italic = 1
+endif
 
-if has("gui_running") || &t_Co == 88 || &t_Co == 256
-	" Returns an approximate grey index for the given grey level
-	fun <SID>grey_number(x)
-		if &t_Co == 88
-			if a:x < 23
-				return 0
-			elseif a:x < 69
-				return 1
-			elseif a:x < 103
-				return 2
-			elseif a:x < 127
-				return 3
-			elseif a:x < 150
-				return 4
-			elseif a:x < 173
-				return 5
-			elseif a:x < 196
-				return 6
-			elseif a:x < 219
-				return 7
-			elseif a:x < 243
-				return 8
-			else
-				return 9
-			endif
-		else
-			if a:x < 14
-				return 0
-			else
-				let l:n = (a:x - 8) / 10
-				let l:m = (a:x - 8) % 10
-				if l:m < 5
-					return l:n
-				else
-					return l:n + 1
-				endif
-			endif
-		endif
-	endfun
-
-	" Returns the actual grey level represented by the grey index
-	fun <SID>grey_level(n)
-		if &t_Co == 88
-			if a:n == 0
-				return 0
-			elseif a:n == 1
-				return 46
-			elseif a:n == 2
-				return 92
-			elseif a:n == 3
-				return 115
-			elseif a:n == 4
-				return 139
-			elseif a:n == 5
-				return 162
-			elseif a:n == 6
-				return 185
-			elseif a:n == 7
-				return 208
-			elseif a:n == 8
-				return 231
-			else
-				return 255
-			endif
-		else
-			if a:n == 0
-				return 0
-			else
-				return 8 + (a:n * 10)
-			endif
-		endif
-	endfun
-
-	" Returns the palette index for the given grey index
-	fun <SID>grey_colour(n)
-		if &t_Co == 88
-			if a:n == 0
-				return 16
-			elseif a:n == 9
-				return 79
-			else
-				return 79 + a:n
-			endif
-		else
-			if a:n == 0
-				return 16
-			elseif a:n == 25
-				return 231
-			else
-				return 231 + a:n
-			endif
-		endif
-	endfun
-
-	" Returns an approximate colour index for the given colour level
-	fun <SID>rgb_number(x)
-		if &t_Co == 88
-			if a:x < 69
-				return 0
-			elseif a:x < 172
-				return 1
-			elseif a:x < 230
-				return 2
-			else
-				return 3
-			endif
-		else
-			if a:x < 75
-				return 0
-			else
-				let l:n = (a:x - 55) / 40
-				let l:m = (a:x - 55) % 40
-				if l:m < 20
-					return l:n
-				else
-					return l:n + 1
-				endif
-			endif
-		endif
-	endfun
-
-	" Returns the actual colour level for the given colour index
-	fun <SID>rgb_level(n)
-		if &t_Co == 88
-			if a:n == 0
-				return 0
-			elseif a:n == 1
-				return 139
-			elseif a:n == 2
-				return 205
-			else
-				return 255
-			endif
-		else
-			if a:n == 0
-				return 0
-			else
-				return 55 + (a:n * 40)
-			endif
-		endif
-	endfun
-
-	" Returns the palette index for the given R/G/B colour indices
-	fun <SID>rgb_colour(x, y, z)
-		if &t_Co == 88
-			return 16 + (a:x * 16) + (a:y * 4) + a:z
-		else
-			return 16 + (a:x * 36) + (a:y * 6) + a:z
-		endif
-	endfun
-
-	" Returns the palette index to approximate the given R/G/B colour levels
-	fun <SID>colour(r, g, b)
-		" Get the closest grey
-		let l:gx = <SID>grey_number(a:r)
-		let l:gy = <SID>grey_number(a:g)
-		let l:gz = <SID>grey_number(a:b)
-
-		" Get the closest colour
-		let l:x = <SID>rgb_number(a:r)
-		let l:y = <SID>rgb_number(a:g)
-		let l:z = <SID>rgb_number(a:b)
-
-		if l:gx == l:gy && l:gy == l:gz
-			" There are two possibilities
-			let l:dgr = <SID>grey_level(l:gx) - a:r
-			let l:dgg = <SID>grey_level(l:gy) - a:g
-			let l:dgb = <SID>grey_level(l:gz) - a:b
-			let l:dgrey = (l:dgr * l:dgr) + (l:dgg * l:dgg) + (l:dgb * l:dgb)
-			let l:dr = <SID>rgb_level(l:gx) - a:r
-			let l:dg = <SID>rgb_level(l:gy) - a:g
-			let l:db = <SID>rgb_level(l:gz) - a:b
-			let l:drgb = (l:dr * l:dr) + (l:dg * l:dg) + (l:db * l:db)
-			if l:dgrey < l:drgb
-				" Use the grey
-				return <SID>grey_colour(l:gx)
-			else
-				" Use the colour
-				return <SID>rgb_colour(l:x, l:y, l:z)
-			endif
-		else
-			" Only one possibility
-			return <SID>rgb_colour(l:x, l:y, l:z)
-		endif
-	endfun
-
-	" Returns the palette index to approximate the 'rrggbb' hex string
-	fun <SID>rgb(rgb)
-		let l:r = ("0x" . strpart(a:rgb, 0, 2)) + 0
-		let l:g = ("0x" . strpart(a:rgb, 2, 2)) + 0
-		let l:b = ("0x" . strpart(a:rgb, 4, 2)) + 0
-
-		return <SID>colour(l:r, l:g, l:b)
-	endfun
-
-	" Sets the highlighting for the given group
-	fun <SID>X(group, fg, bg, attr)
-		if a:fg != ""
-			exec "hi " . a:group . " guifg=#" . a:fg . " ctermfg=" . <SID>rgb(a:fg)
-		endif
-		if a:bg != ""
-			exec "hi " . a:group . " guibg=#" . a:bg . " ctermbg=" . <SID>rgb(a:bg)
-		endif
-		if a:attr != ""
-			exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
-		endif
-	endfun
-
-	" Vim Highlighting
-	call <SID>X("Normal", s:foreground, s:background, "")
-	call <SID>X("LineNr", "00ff7f", "", "")
-	call <SID>X("NonText", s:selection, "", "")
-	call <SID>X("SpecialKey", s:selection, "", "")
-	call <SID>X("Search", s:background, s:yellow, "")
-	call <SID>X("TabLine", s:window, s:foreground, "reverse")
-	call <SID>X("TabLineFill", s:window, s:foreground, "reverse")
-	call <SID>X("StatusLine", s:window, s:yellow, "reverse")
-	call <SID>X("StatusLineNC", s:window, s:foreground, "reverse")
-	call <SID>X("VertSplit", s:window, s:window, "none")
-	call <SID>X("Visual", "", s:selection, "")
-	call <SID>X("Directory", s:blue, "", "")
-	call <SID>X("ModeMsg", s:green, "", "")
-	call <SID>X("MoreMsg", s:green, "", "")
-	call <SID>X("Question", s:green, "", "")
-	call <SID>X("WarningMsg", s:red, "", "")
-	call <SID>X("MatchParen", "", s:selection, "")
-	call <SID>X("Folded", s:comment, s:background, "")
-	call <SID>X("FoldColumn", "", s:background, "")
-	if version >= 700
-		call <SID>X("CursorLine", "", s:line, "none")
-		call <SID>X("CursorColumn", "", s:line, "none")
-		call <SID>X("PMenu", s:foreground, s:selection, "none")
-		call <SID>X("PMenuSel", s:foreground, s:selection, "reverse")
-		call <SID>X("SignColumn", "", s:background, "none")
-	end
-	if version >= 703
-		call <SID>X("ColorColumn", "", s:line, "none")
-	end
-
-	" Standard Highlighting
-	call <SID>X("Comment", s:comment, "", "")
-	call <SID>X("Todo", s:comment, s:selection, "")
-	call <SID>X("Title", s:comment, "", "")
-	call <SID>X("Identifier", s:red, "", "none")
-	call <SID>X("Statement",  "faa500", "", "")
-	call <SID>X("Conditional", "f9008d", "", "")
-	call <SID>X("Repeat", "f9008d", "", "")
-	call <SID>X("Structure", s:purple, "", "")
-	call <SID>X("Function", s:blue, "", "")
-	call <SID>X("Constant", s:orange, "", "")
-	call <SID>X("String", "7fff00", "", "")
-	call <SID>X("Special", "ff7f24", "", "")
-	call <SID>X("PreProc", s:purple, "", "")
-	call <SID>X("Operator", s:aqua, "", "none")
-	call <SID>X("Type", s:yellow, "", "none")
-	call <SID>X("Define", s:purple, "", "none")
-	call <SID>X("Include", s:purple, "", "")
-	call <SID>X("Exception", "ffd700", "", "")
-	call <SID>X("Keyword", "00ff00", "", "")
-	"call <SID>X("Ignore", "666666", "", "")
-
-	" Vim Highlighting
-	call <SID>X("vimCommand", s:red, "", "none")
-
-	" C Highlighting
-	call <SID>X("cType", s:yellow, "", "")
-	call <SID>X("cStorageClass", "ff7373", "", "")
-	call <SID>X("cConditional", "00ff00", "", "")
-	call <SID>X("cRepeat", "00ff00", "", "")
-
-	" NASM Highlighting
-	call <SID>X("nasmGen08Register", "98f5ff", "", "")
-	call <SID>X("nasmGen16Register", "98f5ff", "", "")
-	call <SID>X("nasmGen32Register", "98f5ff", "", "")
-	call <SID>X("nasmGen64Register", "98f5ff", "", "")
-	call <SID>X("nasmSegRegister", "53868b", "", "")
-
-	" PHP Highlighting
-	call <SID>X("phpVarSelector", s:red, "", "")
-	call <SID>X("phpKeyword", s:purple, "", "")
-	call <SID>X("phpRepeat", s:purple, "", "")
-	call <SID>X("phpConditional", s:purple, "", "")
-	call <SID>X("phpStatement", s:purple, "", "")
-	call <SID>X("phpMemberSelector", s:foreground, "", "")
-
-	" Ruby Highlighting
-	call <SID>X("rubySymbol", s:green, "", "")
-	call <SID>X("rubyConstant", s:yellow, "", "")
-	call <SID>X("rubyAccess", s:yellow, "", "")
-	call <SID>X("rubyAttribute", s:blue, "", "")
-	call <SID>X("rubyInclude", s:blue, "", "")
-	call <SID>X("rubyLocalVariableOrMethod", s:orange, "", "")
-	call <SID>X("rubyCurlyBlock", s:orange, "", "")
-	call <SID>X("rubyStringDelimiter", s:green, "", "")
-	call <SID>X("rubyInterpolationDelimiter", s:orange, "", "")
-	call <SID>X("rubyConditional", s:purple, "", "")
-	call <SID>X("rubyRepeat", s:purple, "", "")
-	call <SID>X("rubyControl", s:purple, "", "")
-	call <SID>X("rubyException", s:purple, "", "")
-
-	" Python Highlighting
-	call <SID>X("pythonInclude", s:purple, "", "")
-	call <SID>X("pythonStatement", s:purple, "", "")
-	call <SID>X("pythonConditional", s:purple, "", "")
-	call <SID>X("pythonRepeat", s:purple, "", "")
-	call <SID>X("pythonException", s:purple, "", "")
-	call <SID>X("pythonFunction", s:blue, "", "")
-	call <SID>X("pythonPreCondit", s:purple, "", "")
-	call <SID>X("pythonRepeat", s:aqua, "", "")
-	call <SID>X("pythonExClass", s:orange, "", "")
-
-	" JavaScript Highlighting
-	call <SID>X("javaScriptBraces", s:foreground, "", "")
-	call <SID>X("javaScriptFunction", s:purple, "", "")
-	call <SID>X("javaScriptConditional", s:purple, "", "")
-	call <SID>X("javaScriptRepeat", s:purple, "", "")
-	call <SID>X("javaScriptNumber", s:orange, "", "")
-	call <SID>X("javaScriptMember", s:orange, "", "")
-
-	" HTML Highlighting
-	call <SID>X("htmlTag", s:red, "", "")
-	call <SID>X("htmlTagName", s:red, "", "")
-	call <SID>X("htmlArg", s:red, "", "")
-	call <SID>X("htmlScriptTag", s:red, "", "")
-
-	" Diff Highlighting
-	call <SID>X("diffAdded", s:green, "", "")
-	call <SID>X("diffRemoved", s:red, "", "")
-
-	" ShowMarks Highlighting
-	call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
-	call <SID>X("ShowMarksHLo", s:purple, s:background, "none")
-	call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
-	call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
-
-	" Cucumber Highlighting
-	call <SID>X("cucumberGiven", s:blue, "", "")
-	call <SID>X("cucumberGivenAnd", s:blue, "", "")
-
-	" Go Highlighting
-	call <SID>X("goDirective", s:purple, "", "")
-	call <SID>X("goDeclaration", s:purple, "", "")
-	call <SID>X("goStatement", s:purple, "", "")
-	call <SID>X("goConditional", s:purple, "", "")
-	call <SID>X("goConstants", s:orange, "", "")
-	call <SID>X("goTodo", s:yellow, "", "")
-	call <SID>X("goDeclType", s:green, "", "")
-	call <SID>X("goBuiltins", "00bfff", "", "")
-	call <SID>X("goStruct", "ff531a", "", "")
-	call <SID>X("goStructDef", "ff531a", "", "")
-	call <SID>X("goMethod", "ccff00", "", "")
-
-	" Lua Highlighting
-	call <SID>X("luaStatement", s:purple, "", "")
-	call <SID>X("luaRepeat", s:purple, "", "")
-	call <SID>X("luaCondStart", s:purple, "", "")
-	call <SID>X("luaCondElseif", s:purple, "", "")
-	call <SID>X("luaCond", s:purple, "", "")
-	call <SID>X("luaCondEnd", s:purple, "", "")
-
-	" Delete Functions
-	delf <SID>X
-	delf <SID>rgb
-	delf <SID>colour
-	delf <SID>rgb_colour
-	delf <SID>rgb_level
-	delf <SID>rgb_number
-	delf <SID>grey_colour
-	delf <SID>grey_level
-	delf <SID>grey_number
+if !exists("g:tomorrow_night_term_italic")
+	let g:tomorrow_night_term_italic = 0
 endif
 
 set background=dark
+hi clear
+
+if exists("syntax_on")
+	syntax reset
+endif
+
+let colors_name = "Tomorrow-Night"
+
+" Returns an approximate grey index for the given grey level
+function s:grey_number(x)
+	if a:x < 14
+		return 0
+	else
+		let l:n = (a:x - 8) / 10
+		let l:m = (a:x - 8) % 10
+		if l:m < 5
+			return l:n
+		else
+			return l:n + 1
+		endif
+	endif
+endfunction
+
+" Returns the actual grey level represented by the grey index
+function s:grey_level(n)
+	if a:n == 0
+		return 0
+	else
+		return 8 + (a:n * 10)
+	endif
+endfun
+
+" Returns the palette index for the given grey index
+function s:grey_colour(n)
+	if a:n == 0
+		return 16
+	elseif a:n == 25
+		return 231
+	else
+		return 231 + a:n
+	endif
+endfunction
+
+" Returns an approximate colour index for the given colour level
+function s:rgb_number(x)
+	if a:x < 75
+		return 0
+	else
+		let l:n = (a:x - 55) / 40
+		let l:m = (a:x - 55) % 40
+		if l:m < 20
+			return l:n
+		else
+			return l:n + 1
+		endif
+	endif
+endfunction
+
+" Returns the actual colour level for the given colour index
+function s:rgb_level(n)
+	if a:n == 0
+		return 0
+	else
+		return 55 + (a:n * 40)
+	endif
+endfunction
+
+" Returns the palette index for the given R/G/B colour indices
+function s:rgb_colour(x, y, z)
+	return 16 + (a:x * 36) + (a:y * 6) + a:z
+endfunction
+
+
+" Returns the palette index to approximate the given R/G/B colour levels
+function s:colour(r, g, b)
+	" Get the closest grey
+	let l:gx = s:grey_number(a:r)
+	let l:gy = s:grey_number(a:g)
+	let l:gz = s:grey_number(a:b)
+
+	" Get the closest colour
+	let l:x = s:rgb_number(a:r)
+	let l:y = s:rgb_number(a:g)
+	let l:z = s:rgb_number(a:b)
+
+	if l:gx == l:gy && l:gy == l:gz
+		" There are two possibilities
+		let l:dgr = s:grey_level(l:gx) - a:r
+		let l:dgg = s:grey_level(l:gy) - a:g
+		let l:dgb = s:grey_level(l:gz) - a:b
+		let l:dgrey = (l:dgr * l:dgr) + (l:dgg * l:dgg) + (l:dgb * l:dgb)
+		let l:dr = s:rgb_level(l:gx) - a:r
+		let l:dg = s:rgb_level(l:gy) - a:g
+		let l:db = s:rgb_level(l:gz) - a:b
+		let l:drgb = (l:dr * l:dr) + (l:dg * l:dg) + (l:db * l:db)
+		if l:dgrey < l:drgb
+			" Use the grey
+			return s:grey_colour(l:gx)
+		else
+			" Use the colour
+			return s:rgb_colour(l:x, l:y, l:z)
+		endif
+	else
+		" Only one possibility
+		return s:rgb_colour(l:x, l:y, l:z)
+	endif
+endfunction
+
+" Returns the palette index to approximate the 'rrggbb' hex string
+function s:rgb(rgb)
+	let l:rgb = strpart(a:rgb, 1, 6)
+	let l:r = ("0x" . strpart(l:rgb, 0, 2)) + 0
+	let l:g = ("0x" . strpart(l:rgb, 2, 2)) + 0
+	let l:b = ("0x" . strpart(l:rgb, 4, 2)) + 0
+
+	return s:colour(l:r, l:g, l:b)
+endfunction
+
+function! s:h(group, style)
+	let s:ctermformat = "NONE"
+	let s:guiformat = "NONE"
+	if has_key(a:style, "format")
+		let s:ctermformat = a:style.format
+		let s:guiformat = a:style.format
+	endif
+	if g:tomorrow_night_term_italic == 0
+		let s:ctermformat = substitute(s:ctermformat, ",italic", "", "")
+		let s:ctermformat = substitute(s:ctermformat, "italic,", "", "")
+		let s:ctermformat = substitute(s:ctermformat, "italic", "", "")
+	endif
+	if g:tomorrow_night_gui_italic == 0
+		let s:guiformat = substitute(s:guiformat, ",italic", "", "")
+		let s:guiformat = substitute(s:guiformat, "italic,", "", "")
+		let s:guiformat = substitute(s:guiformat, "italic", "", "")
+	endif
+	execute "highlight" a:group
+				\ "guifg="   .(has_key(a:style, "fg")      ? a:style.fg   : "NONE")
+				\ "guibg="   .(has_key(a:style, "bg")      ? a:style.bg   : "NONE")
+				\ "guisp="   .(has_key(a:style, "sp")      ? a:style.sp   : "NONE")
+				\ "gui="     .(!empty(s:guiformat) ? s:guiformat   : "NONE")
+				\ "ctermfg=" .(has_key(a:style, "fg")      ? s:rgb(a:style.fg)   : "NONE")
+				\ "ctermbg=" .(has_key(a:style, "bg")      ? s:rgb(a:style.bg)   : "NONE")
+				\ "cterm="   .(!empty(s:ctermformat) ? s:ctermformat   : "NONE")
+
+endfunction
+
+" Palettes
+" --------
+
+let s:white       = "#E8E8E3"
+let s:black       = "#272822"
+let s:lightblack  = "#2D2E27"
+let s:lightblack2 = "#383A3E"
+let s:darkblack   = "#211F1C"
+let s:grey        = "#8F908A"
+let s:lightgrey   = "#575b61"
+let s:darkgrey    = "#64645e"
+let s:warmgrey    = "#75715E"
+
+let s:pink        = "#F92772"
+let s:green       = "#7CFC00"
+let s:aqua        = "#66D9EF"
+let s:yellow      = "#E5E500"
+let s:orange      = "#FD9720"
+let s:purple      = "#EE82EE"
+let s:red         = "#CC6666"
+let s:blue        = "#198CFF"
+let s:darkred     = "#5f0000"
+
+let s:addfg       = "#d7ffaf"
+let s:addbg       = "#5f875f"
+let s:delbg       = "#f75f5f"
+let s:changefg    = "#d7d7ff"
+let s:changebg    = "#5f5f87"
+
+
+" Highlighting
+" ------------
+
+" editor
+call s:h("Normal",        { "fg": s:white,      "bg": s:black })
+call s:h("ColorColumn",   {                     "bg": s:lightblack })
+call s:h("CursorColumn",  {                     "bg": s:lightblack2 })
+call s:h("CursorLine",    {                     "bg": s:lightblack2 })
+call s:h("NonText",       { "fg": s:lightgrey })
+call s:h("StatusLine",    { "fg": s:warmgrey,   "bg": s:black,        "format": "reverse" })
+call s:h("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:warmgrey,     "format": "reverse" })
+call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
+call s:h("Visual",        {                     "bg": s:lightgrey })
+call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
+call s:h("MatchParen",    { "fg": s:black,      "bg": s:purple })
+call s:h("Question",      { "fg": s:yellow })
+call s:h("ModeMsg",       { "fg": s:yellow })
+call s:h("MoreMsg",       { "fg": s:yellow })
+call s:h("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": "standout" })
+call s:h("WarningMsg",    { "fg": s:red })
+call s:h("VertSplit",     { "fg": s:darkgrey,   "bg": s:darkblack })
+call s:h("LineNr",        { "fg": s:grey,       "bg": s:lightblack })
+call s:h("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
+call s:h("SignColumn",    {                     "bg": s:lightblack })
+
+" misc
+call s:h("SpecialKey",    { "fg": s:pink })
+call s:h("Title",         { "fg": s:yellow })
+call s:h("Directory",     { "fg": s:aqua })
+
+" diff
+call s:h("DiffAdd",       { "fg": s:addfg,      "bg": s:addbg })
+call s:h("DiffDelete",    { "fg": s:black,      "bg": s:delbg })
+call s:h("DiffChange",    { "fg": s:changefg,   "bg": s:changebg })
+call s:h("DiffText",      { "fg": s:black,      "bg": s:aqua })
+
+" fold
+call s:h("Folded",        { "fg": s:warmgrey,   "bg": s:darkblack })
+call s:h("FoldColumn",    {                     "bg": s:darkblack })
+
+" popup menu
+call s:h("Pmenu",         { "fg": s:lightblack, "bg": s:white })
+call s:h("PmenuSel",      { "fg": s:aqua,       "bg": s:black,        "format": "reverse,bold" })
+call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
+
+" Generic Syntax Highlighting
+" ---------------------------
+
+
+call s:h("Constant",      { "fg": s:purple })
+call s:h("Number",        { "fg": s:purple })
+call s:h("Float",         { "fg": s:purple })
+call s:h("Boolean",       { "fg": s:purple })
+call s:h("Character",     { "fg": s:yellow })
+call s:h("String",        { "fg": s:yellow })
+
+call s:h("Type",          { "fg": s:aqua })
+call s:h("Structure",     { "fg": s:aqua })
+call s:h("StorageClass",  { "fg": s:aqua })
+call s:h("Typedef",       { "fg": s:aqua })
+
+call s:h("Identifier",    { "fg": s:green })
+call s:h("Function",      { "fg": s:green })
+
+call s:h("Statement",     { "fg": s:pink })
+call s:h("Operator",      { "fg": s:pink })
+call s:h("Label",         { "fg": s:pink })
+call s:h("Keyword",       { "fg": s:aqua })
+"        Conditional"
+"        Repeat"
+"        Exception"
+
+call s:h("PreProc",       { "fg": s:green })
+call s:h("Include",       { "fg": s:pink })
+call s:h("Define",        { "fg": s:pink })
+call s:h("Macro",         { "fg": s:green })
+call s:h("PreCondit",     { "fg": s:green })
+
+call s:h("Special",       { "fg": s:purple })
+call s:h("SpecialChar",   { "fg": s:pink })
+call s:h("Delimiter",     { "fg": s:pink })
+call s:h("SpecialComment",{ "fg": s:aqua })
+call s:h("Tag",           { "fg": s:pink })
+"        Debug"
+
+call s:h("Todo",          { "fg": s:orange,   "format": "bold,italic" })
+call s:h("Comment",       { "fg": s:warmgrey, "format": "italic" })
+
+call s:h("Underlined",    { "fg": s:green })
+call s:h("Ignore",        {})
+call s:h("Error",         { "fg": s:red, "bg": s:darkred })
+
+" NerdTree
+" --------
+
+call s:h("NERDTreeOpenable",        { "fg": s:yellow })
+call s:h("NERDTreeClosable",        { "fg": s:yellow })
+call s:h("NERDTreeHelp",            { "fg": s:yellow })
+call s:h("NERDTreeBookmarksHeader", { "fg": s:pink })
+call s:h("NERDTreeBookmarksLeader", { "fg": s:black })
+call s:h("NERDTreeBookmarkName",    { "fg": s:yellow })
+call s:h("NERDTreeCWD",             { "fg": s:pink })
+call s:h("NERDTreeUp",              { "fg": s:white })
+call s:h("NERDTreeDirSlash",        { "fg": s:grey })
+call s:h("NERDTreeDir",             { "fg": s:grey })
+
+" Syntastic
+" ---------
+
+hi! link SyntasticErrorSign Error
+call s:h("SyntasticWarningSign",    { "fg": s:lightblack, "bg": s:orange })
+
+
+" Language highlight
+" ------------------
+
+" Vim command
+call s:h("vimCommand",              { "fg": s:pink })
+
+" c
+call s:h("cType",                  { "fg": s:yellow })
+call s:h("cStorageClass",          { "fg": "#FF7373" })
+call s:h("cConditional",           { "fg": "#00FF00" })
+call s:h("cRepeat",                { "fg": "#00FF00" })
+
+" nasm
+call s:h("nasmGen08Register",          { "fg": "#98F5FF" })
+call s:h("nasmGen16Register",          { "fg": "#98F5FF" })
+call s:h("nasmGen32Register",          { "fg": "#98F5FF" })
+call s:h("nasmGen64Register",          { "fg": "#98F5FF" })
+call s:h("nasmSegRegister",            { "fg": "#53868B" })
+
+" python
+call s:h("pythonInclude",          { "fg": s:purple })
+call s:h("pythonStatement",        { "fg": s:purple })
+call s:h("pythonConditional",      { "fg": s:purple })
+call s:h("pythonRepeat",           { "fg": s:purple })
+call s:h("pythonException",        { "fg": s:purple })
+call s:h("pythonFunction",         { "fg": s:purple })
+call s:h("pythonPreCondit",        { "fg": s:purple })
+call s:h("pythonRepeat",           { "fg": s:aqua })
+call s:h("pythonExClass",          { "fg": s:orange })
+
+" Javascript
+call s:h("jsFuncName",          { "fg": s:green })
+call s:h("jsThis",              { "fg": s:pink })
+call s:h("jsFunctionKey",       { "fg": s:green })
+call s:h("jsPrototype",         { "fg": s:aqua })
+call s:h("jsExceptions",        { "fg": s:aqua })
+call s:h("jsFutureKeys",        { "fg": s:aqua })
+call s:h("jsBuiltins",          { "fg": s:aqua })
+call s:h("jsArgsObj",           { "fg": s:aqua })
+call s:h("jsStatic",            { "fg": s:aqua })
+call s:h("jsSuper",             { "fg": s:aqua })
+call s:h("jsFuncArgRest",       { "fg": s:purple, "format": "italic" })
+call s:h("jsFuncArgs",          { "fg": s:orange, "format": "italic" })
+call s:h("jsStorageClass",      { "fg": s:aqua })
+call s:h("jsDocTags",           { "fg": s:aqua,   "format": "italic" })
+
+" Html
+call s:h("htmlTag",             { "fg": s:white })
+call s:h("htmlEndTag",          { "fg": s:white })
+call s:h("htmlTagName",         { "fg": s:pink })
+call s:h("htmlArg",             { "fg": s:green })
+call s:h("htmlSpecialChar",     { "fg": s:purple })
+
+" Go Highlighting
+call s:h("goDirective",         { "fg": s:purple })
+call s:h("goDeclaration",       { "fg": s:purple })
+call s:h("goStatement",         { "fg": s:purple })
+call s:h("goConditional",       { "fg": s:purple })
+call s:h("goConstants",         { "fg": s:orange })
+call s:h("goTodo",              { "fg": s:yellow })
+call s:h("goDeclType",          { "fg": s:green })
+call s:h("goBuiltins",          { "fg": "#00BFFF" })
+call s:h("goStruct",            { "fg": "#FF531A" })
+call s:h("goStructDef",         { "fg": "#FF531A" })
+call s:h("goMethod",            { "fg": "#CCFF00" })
