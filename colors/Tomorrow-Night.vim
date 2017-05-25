@@ -176,8 +176,8 @@ let s:lightblack2 = "#383A3E"
 let s:darkblack   = "#211F1C"
 let s:grey        = "#8F908A"
 let s:lightgrey   = "#575b61"
-let s:darkgrey    = "#64645e"
-let s:warmgrey    = "#75715E"
+let s:darkgrey    = "#3c3c3c"
+let s:warmgrey    = "#907d57"
 
 let s:pink        = "#F92772"
 let s:green       = "#8ad000"
@@ -207,8 +207,6 @@ call s:h("ColorColumn",   {                     "bg": s:lightblack })
 call s:h("CursorColumn",  {                     "bg": s:lightblack2 })
 call s:h("CursorLine",    {                     "bg": s:lightblack2 })
 call s:h("NonText",       { "fg": s:lightgrey })
-call s:h("StatusLine",    { "fg": s:warmgrey,   "bg": s:black,        "format": "reverse" })
-call s:h("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:warmgrey,     "format": "reverse" })
 call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
 call s:h("Visual",        {                     "bg": s:lightgrey })
 call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
@@ -235,8 +233,8 @@ call s:h("DiffChange",    { "fg": s:changefg,   "bg": s:changebg })
 call s:h("DiffText",      { "fg": s:black,      "bg": s:aqua })
 
 " fold
-call s:h("Folded",        { "fg": s:warmgrey,   "bg": s:darkblack })
-call s:h("FoldColumn",    {                     "bg": s:darkblack })
+call s:h("Folded",        { "fg": s:warmgrey,   "bg": s:darkgrey })
+call s:h("FoldColumn",    {                     "bg": s:darkgrey })
 
 " popup menu
 call s:h("Pmenu",         { "fg": s:lightblack, "bg": s:white })
@@ -263,7 +261,7 @@ call s:h("Identifier",    { "fg": s:orange })
 call s:h("Function",      { "fg": s:blue })
 
 call s:h("Statement",     { "fg": s:pink })
-call s:h("Operator",      { "fg": s:pink })
+call s:h("Operator",      { "fg": s:aqua })
 call s:h("Label",         { "fg": s:pink })
 call s:h("Keyword",       { "fg": s:aqua })
 "        Conditional"
@@ -288,7 +286,7 @@ call s:h("Comment",       { "fg": s:grey,     "format": "italic" })
 
 call s:h("Underlined",    { "fg": s:green })
 call s:h("Ignore",        {})
-call s:h("Error",         { "fg": s:red, "bg": s:darkred })
+call s:h("Error",         { "fg": s:pink, "bg": s:darkred })
 
 " NerdTree
 " --------
@@ -309,6 +307,7 @@ call s:h("NERDTreeDir",             { "fg": s:grey })
 
 hi! link SyntasticErrorSign Error
 call s:h("SyntasticWarningSign",    { "fg": s:lightblack, "bg": s:orange })
+call s:h("SyntasticErrorSign",     { "fg": s:lightblack, "bg": s:pink })
 
 
 " Language highlight
@@ -332,14 +331,12 @@ call s:h("nasmSegRegister",            { "fg": "#53868B" })
 
 " python
 call s:h("pythonInclude",          { "fg": s:purple })
-call s:h("pythonStatement",        { "fg": s:purple })
+call s:h("pythonStatement",        { "fg": s:orange })
 call s:h("pythonConditional",      { "fg": s:purple })
-call s:h("pythonRepeat",           { "fg": s:purple })
-call s:h("pythonException",        { "fg": s:purple })
-call s:h("pythonFunction",         { "fg": s:purple })
-call s:h("pythonPreCondit",        { "fg": s:purple })
+call s:h("pythonException",        { "fg": s:red })
+call s:h("pythonFunction",         { "fg": s:blue })
 call s:h("pythonRepeat",           { "fg": s:aqua })
-call s:h("pythonExClass",          { "fg": s:orange })
+call s:h("pythonExClass",          { "fg": s:yellow })
 
 " Javascript
 call s:h("jsFuncName",          { "fg": s:green })
