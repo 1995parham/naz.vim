@@ -297,10 +297,10 @@ call s:h("NERDTreeHelp",            { "fg": s:yellow })
 call s:h("NERDTreeBookmarksHeader", { "fg": s:pink })
 call s:h("NERDTreeBookmarksLeader", { "fg": s:black })
 call s:h("NERDTreeBookmarkName",    { "fg": s:yellow })
-call s:h("NERDTreeCWD",             { "fg": s:pink })
+call s:h("NERDTreeCWD",             { "fg": s:orange })
 call s:h("NERDTreeUp",              { "fg": s:white })
 call s:h("NERDTreeDirSlash",        { "fg": s:grey })
-call s:h("NERDTreeDir",             { "fg": s:grey })
+call s:h("NERDTreeDir",             { "fg": s:aqua })
 
 " Syntastic
 " ---------
