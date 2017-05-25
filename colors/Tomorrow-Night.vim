@@ -26,7 +26,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name = "Tomorrow-Night"
+let g:colors_name = "Tomorrow-Night"
 
 " Returns an approximate grey index for the given grey level
 function s:grey_number(x)
