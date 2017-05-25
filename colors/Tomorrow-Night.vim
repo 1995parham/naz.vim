@@ -180,12 +180,14 @@ let s:darkgrey    = "#64645e"
 let s:warmgrey    = "#75715E"
 
 let s:pink        = "#F92772"
-let s:green       = "#7CFC00"
+let s:green       = "#8ad000"
+let s:springgreen = "#00ff7f"
 let s:aqua        = "#66D9EF"
-let s:yellow      = "#E5E500"
+let s:yellow      = "#E6DB74"
 let s:orange      = "#FD9720"
 let s:purple      = "#EE82EE"
-let s:red         = "#CC6666"
+let s:chartreuse  = "#7fff00"
+let s:red         = "#e73c50"
 let s:blue        = "#198CFF"
 let s:darkred     = "#5f0000"
 
@@ -210,14 +212,14 @@ call s:h("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:warmgrey,     "format": 
 call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
 call s:h("Visual",        {                     "bg": s:lightgrey })
 call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
-call s:h("MatchParen",    { "fg": s:black,      "bg": s:purple })
+call s:h("MatchParen",    { "fg": s:black,      "bg": s:lightgrey })
 call s:h("Question",      { "fg": s:yellow })
 call s:h("ModeMsg",       { "fg": s:yellow })
 call s:h("MoreMsg",       { "fg": s:yellow })
 call s:h("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": "standout" })
 call s:h("WarningMsg",    { "fg": s:red })
 call s:h("VertSplit",     { "fg": s:darkgrey,   "bg": s:darkblack })
-call s:h("LineNr",        { "fg": s:grey,       "bg": s:lightblack })
+call s:h("LineNr",        { "fg": s:springgreen,"bg": s:black })
 call s:h("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
 call s:h("SignColumn",    {                     "bg": s:lightblack })
 
@@ -250,15 +252,15 @@ call s:h("Number",        { "fg": s:purple })
 call s:h("Float",         { "fg": s:purple })
 call s:h("Boolean",       { "fg": s:purple })
 call s:h("Character",     { "fg": s:yellow })
-call s:h("String",        { "fg": s:yellow })
+call s:h("String",        { "fg": s:chartreuse })
 
 call s:h("Type",          { "fg": s:aqua })
 call s:h("Structure",     { "fg": s:aqua })
 call s:h("StorageClass",  { "fg": s:aqua })
 call s:h("Typedef",       { "fg": s:aqua })
 
-call s:h("Identifier",    { "fg": s:green })
-call s:h("Function",      { "fg": s:green })
+call s:h("Identifier",    { "fg": s:orange })
+call s:h("Function",      { "fg": s:blue })
 
 call s:h("Statement",     { "fg": s:pink })
 call s:h("Operator",      { "fg": s:pink })
@@ -282,7 +284,7 @@ call s:h("Tag",           { "fg": s:pink })
 "        Debug"
 
 call s:h("Todo",          { "fg": s:orange,   "format": "bold,italic" })
-call s:h("Comment",       { "fg": s:warmgrey, "format": "italic" })
+call s:h("Comment",       { "fg": s:grey,     "format": "italic" })
 
 call s:h("Underlined",    { "fg": s:green })
 call s:h("Ignore",        {})
