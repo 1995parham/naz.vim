@@ -170,7 +170,7 @@ endfunction
 " --------
 
 let s:white       = "#E8E8E3"
-let s:black       = "#272822"
+let s:black       = "#2F2F2F"
 let s:lightblack  = "#2D2E27"
 let s:lightblack2 = "#383A3E"
 let s:darkblack   = "#211F1C"
