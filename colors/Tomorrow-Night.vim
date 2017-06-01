@@ -285,7 +285,6 @@ call s:h("Tag",           { "fg": s:pink })
 call s:h("Todo",          { "fg": s:orange,   "format": "bold,italic" })
 call s:h("Comment",       { "fg": s:grey,     "format": "italic" })
 
-call s:h("Underlined",    { "fg": s:green })
 call s:h("Ignore",        {})
 call s:h("Error",         { "fg": s:pink, "bg": s:darkred })
 
