@@ -305,7 +305,6 @@ call s:h("NERDTreeDir",             { "fg": s:aqua })
 " Syntastic
 " ---------
 
-hi! link SyntasticErrorSign Error
 call s:h("SyntasticWarningSign",    { "fg": s:lightblack, "bg": s:orange })
 call s:h("SyntasticErrorSign",     { "fg": s:lightblack, "bg": s:pink })
 
@@ -362,7 +361,7 @@ call s:h("htmlTagName",         { "fg": s:pink })
 call s:h("htmlArg",             { "fg": s:green })
 call s:h("htmlSpecialChar",     { "fg": s:purple })
 
-" Go Highlighting
+" Go
 call s:h("goDirective",         { "fg": s:purple })
 call s:h("goDeclaration",       { "fg": s:purple })
 call s:h("goStatement",         { "fg": s:purple })
@@ -374,3 +373,8 @@ call s:h("goBuiltins",          { "fg": "#00BFFF" })
 call s:h("goStruct",            { "fg": "#FF531A" })
 call s:h("goStructDef",         { "fg": "#FF531A" })
 call s:h("goMethod",            { "fg": "#CCFF00" })
+
+" Git
+call s:h("diffAdded",            { "fg": s:green })
+call s:h("diffRemoved",            { "fg": s:red })
+call s:h("diffCommitSummary", { "format": "bold" })
