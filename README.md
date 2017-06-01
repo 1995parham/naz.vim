@@ -4,4 +4,4 @@
 Parham modification of Tomorrow Night vim theme.
 
 ## Recomendations
-vim-airline-theme: murmur
+vim-airline-theme: tomorrow
