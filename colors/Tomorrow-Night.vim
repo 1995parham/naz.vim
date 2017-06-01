@@ -185,6 +185,8 @@ let s:springgreen = "#00ff7f"
 let s:aqua        = "#66D9EF"
 let s:yellow      = "#E6DB74"
 let s:orange      = "#FD9720"
+let s:sienna1     = "#ff8247"
+let s:tomato1     = "#ff6347"
 let s:purple      = "#EE82EE"
 let s:chartreuse  = "#7fff00"
 let s:red         = "#e73c50"
@@ -245,8 +247,8 @@ call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
 
 
 call s:h("Constant",      { "fg": s:purple })
-call s:h("Number",        { "fg": s:purple })
-call s:h("Float",         { "fg": s:purple })
+call s:h("Number",        { "fg": s:tomato1 })
+call s:h("Float",         { "fg": s:tomato1 })
 call s:h("Boolean",       { "fg": s:purple })
 call s:h("Character",     { "fg": s:yellow })
 call s:h("String",        { "fg": s:chartreuse })
@@ -335,6 +337,8 @@ call s:h("pythonException",        { "fg": s:red })
 call s:h("pythonFunction",         { "fg": s:blue })
 call s:h("pythonRepeat",           { "fg": s:aqua })
 call s:h("pythonExClass",          { "fg": s:yellow })
+call s:h("pythonBuiltinFunc",      { "fg": "#FFC125" })
+call s:h("pythonOperator",         { "fg": "#f5deb3" })
 
 " Javascript
 call s:h("jsFuncName",          { "fg": s:blue })
