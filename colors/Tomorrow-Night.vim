@@ -205,9 +205,7 @@ let s:changebg    = "#5f5f87"
 call s:h("Normal",        { "fg": s:white,      "bg": s:black })
 call s:h("ColorColumn",   {                     "bg": s:lightblack })
 call s:h("CursorColumn",  {                     "bg": s:lightblack2 })
-call s:h("CursorLine",    {                     "bg": s:lightblack2 })
 call s:h("NonText",       { "fg": s:lightgrey })
-call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
 call s:h("Visual",        {                     "bg": s:lightgrey })
 call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
 call s:h("MatchParen",    { "fg": s:black,      "bg": s:lightgrey })
@@ -218,13 +216,14 @@ call s:h("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": 
 call s:h("WarningMsg",    { "fg": s:red })
 call s:h("VertSplit",     { "fg": s:darkgrey,   "bg": s:darkblack })
 call s:h("LineNr",        { "fg": s:springgreen,"bg": s:black })
+call s:h("CursorLine",    {                     "bg": s:lightblack2 })
 call s:h("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
 call s:h("SignColumn",    {                     "bg": s:lightblack })
 
 " misc
 call s:h("SpecialKey",    { "fg": s:pink })
 call s:h("Title",         { "fg": s:yellow })
-call s:h("Directory",     { "fg": s:aqua })
+call s:h("Directory",     { "fg": s:orange })
 
 " diff
 call s:h("DiffAdd",       { "fg": s:addfg,      "bg": s:addbg })
@@ -237,7 +236,7 @@ call s:h("Folded",        { "fg": s:warmgrey,   "bg": s:darkgrey })
 call s:h("FoldColumn",    {                     "bg": s:darkgrey })
 
 " popup menu
-call s:h("Pmenu",         { "fg": s:lightblack, "bg": s:white })
+call s:h("Pmenu",         { "fg": s:orange, "bg": s:black })
 call s:h("PmenuSel",      { "fg": s:aqua,       "bg": s:black,        "format": "reverse,bold" })
 call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
 
