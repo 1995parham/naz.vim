@@ -255,7 +255,7 @@ call s:h("String",        { "fg": s:chartreuse })
 
 call s:h("Type",          { "fg": s:aqua })
 call s:h("Structure",     { "fg": s:aqua })
-call s:h("StorageClass",  { "fg": s:aqua })
+call s:h("StorageClass",  { "fg": "#00CED1" })
 call s:h("Typedef",       { "fg": s:aqua })
 
 call s:h("Identifier",    { "fg": s:orange })
@@ -269,7 +269,7 @@ call s:h("Keyword",       { "fg": s:aqua })
 "        Repeat"
 "        Exception"
 
-call s:h("PreProc",       { "fg": s:green })
+call s:h("PreProc",       { "fg": "#ff7f50" })
 call s:h("Include",       { "fg": s:pink })
 call s:h("Define",        { "fg": s:pink })
 call s:h("Macro",         { "fg": s:green })
@@ -343,19 +343,18 @@ call s:h("pythonOperator",         { "fg": "#f5deb3" })
 " Javascript
 call s:h("jsFuncName",          { "fg": s:blue })
 call s:h("jsThis",              { "fg": s:pink })
+call s:h("jsSuper",             { "fg": s:pink })
 call s:h("jsFunctionKey",       { "fg": s:blue })
-call s:h("jsPrototype",         { "fg": s:aqua })
+call s:h("jsPrototype",         { "fg": s:pink })
 call s:h("jsExceptions",        { "fg": s:red })
 call s:h("jsFutureKeys",        { "fg": s:aqua })
 call s:h("jsClassDefinition",   { "fg": s:orange })
 call s:h("jsBuiltins",          { "fg": s:aqua })
 call s:h("jsArgsObj",           { "fg": s:aqua })
-call s:h("jsStatic",            { "fg": s:aqua })
-call s:h("jsSuper",             { "fg": s:aqua })
-call s:h("jsFuncArgRest",       { "fg": s:purple, "format": "italic" })
+call s:h("jsClassMethodType",   { "fg": "#f5deb3" })
+call s:h("jsObjectKey",         { "fg": "#ffd39b" })
 call s:h("jsFuncArgs",          { "fg": s:orange, "format": "italic" })
 call s:h("jsStorageClass",      { "fg": s:aqua })
-call s:h("jsDocTags",           { "fg": s:aqua,   "format": "italic" })
 
 " Html
 call s:h("htmlTag",             { "fg": s:white })
