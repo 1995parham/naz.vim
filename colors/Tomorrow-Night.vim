@@ -359,7 +359,7 @@ call s:h("jsStorageClass",      { "fg": s:aqua })
 call s:h("htmlTag",             { "fg": s:white })
 call s:h("htmlEndTag",          { "fg": s:white })
 call s:h("htmlTagName",         { "fg": s:pink })
-call s:h("htmlArg",             { "fg": s:green })
+call s:h("htmlArg",             { "fg": s:orange })
 call s:h("htmlSpecialChar",     { "fg": s:purple })
 
 " Go
