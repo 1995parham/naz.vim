@@ -339,7 +339,7 @@ call s:h("pythonExClass",          { "fg": s:yellow })
 call s:h("pythonBuiltinFunc",      { "fg": "#FFC125" })
 call s:h("pythonOperator",         { "fg": "#f5deb3" })
 
-" Javascript
+" javascript
 call s:h("jsFuncName",          { "fg": s:blue })
 call s:h("jsThis",              { "fg": s:pink })
 call s:h("jsSuper",             { "fg": s:pink })
@@ -355,14 +355,14 @@ call s:h("jsObjectKey",         { "fg": "#ffd39b" })
 call s:h("jsFuncArgs",          { "fg": s:orange, "format": "italic" })
 call s:h("jsStorageClass",      { "fg": s:aqua })
 
-" Html
+" html
 call s:h("htmlTag",             { "fg": s:white })
 call s:h("htmlEndTag",          { "fg": s:white })
 call s:h("htmlTagName",         { "fg": s:pink })
 call s:h("htmlArg",             { "fg": s:orange })
 call s:h("htmlSpecialChar",     { "fg": s:purple })
 
-" Go
+" go
 call s:h("goDirective",         { "fg": s:purple })
 call s:h("goDeclaration",       { "fg": s:purple })
 call s:h("goStatement",         { "fg": s:purple })
@@ -375,7 +375,7 @@ call s:h("goStruct",            { "fg": "#FF531A" })
 call s:h("goStructDef",         { "fg": "#FF531A" })
 call s:h("goMethod",            { "fg": "#CCFF00" })
 
-" Git
+" git
 call s:h("diffAdded",            { "fg": s:green })
 call s:h("diffRemoved",            { "fg": s:red })
 call s:h("diffCommitSummary", { "format": "bold" })
