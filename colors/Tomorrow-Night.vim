@@ -321,6 +321,9 @@ call s:h("cStorageClass",          { "fg": "#FF7373" })
 call s:h("cConditional",           { "fg": "#00FF00" })
 call s:h("cRepeat",                { "fg": "#00FF00" })
 
+" cpp
+call s:h("cCustomClass",     { "fg": "#FFDB1A" })
+
 " nasm
 call s:h("nasmGen08Register",          { "fg": "#98F5FF" })
 call s:h("nasmGen16Register",          { "fg": "#98F5FF" })
