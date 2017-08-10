@@ -336,11 +336,12 @@ call s:h("pythonInclude",          { "fg": s:purple })
 call s:h("pythonStatement",        { "fg": s:orange })
 call s:h("pythonConditional",      { "fg": s:purple })
 call s:h("pythonException",        { "fg": s:red })
-call s:h("pythonFunction",         { "fg": s:blue })
+call s:h("pythonFunction",         { "fg": "#50D0FF" })
 call s:h("pythonRepeat",           { "fg": s:aqua })
 call s:h("pythonExClass",          { "fg": s:yellow })
 call s:h("pythonBuiltinFunc",      { "fg": "#FFC125" })
 call s:h("pythonOperator",         { "fg": "#f5deb3" })
+call s:h("pythonBoolean",          { "fg": "#FF4444" })
 
 " javascript
 call s:h("jsFuncName",          { "fg": s:blue })
