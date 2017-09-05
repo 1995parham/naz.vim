@@ -380,6 +380,10 @@ call s:h("goStructDef",         { "fg": "#FF531A" })
 call s:h("goMethod",            { "fg": "#CCFF00" })
 
 " git
-call s:h("diffAdded",            { "fg": s:green })
-call s:h("diffRemoved",            { "fg": s:red })
-call s:h("diffCommitSummary", { "format": "bold" })
+call s:h("diffAdded",           { "fg": s:green })
+call s:h("diffRemoved",         { "fg": s:red })
+call s:h("diffCommitSummary",   { "format": "bold" })
+
+" json
+call s:h("jsonKeyword",         { "fg": s:orange })
+call s:h("jsonBraces",          { "fg": "#2ABDDC" })
