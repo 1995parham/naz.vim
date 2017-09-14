@@ -379,6 +379,14 @@ call s:h("goStruct",            { "fg": "#FF531A" })
 call s:h("goStructDef",         { "fg": "#FF531A" })
 call s:h("goMethod",            { "fg": "#CCFF00" })
 
+" erlang
+call s:h("erlangGlobalFuncCall", { "fg": "#CCFF00" })
+call s:h("erlangGlobalFuncRef",  { "fg": "#CCFF00" })
+call s:h("erlangLocalFuncCall",  { "fg": "#3399FF" })
+call s:h("erlangLocalFuncRef",   { "fg": "#3399FF" })
+call s:h("erlangAtom",           { "fg": "#FF9933" })
+
+
 " git
 call s:h("diffAdded",           { "fg": s:green })
 call s:h("diffRemoved",         { "fg": s:red })
