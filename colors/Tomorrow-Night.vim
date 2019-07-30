@@ -1,10 +1,10 @@
 " In The Name Of God
-" File:         Tomorrow-Night.vim
-" Last Change:	2017 May 25
-" Maintainer:	Parham Alvani <user.email>
+" Tomorrow Night 24bit Color Theme
+" Last Change:	2019-Jul-30
+" Maintainer:	Parham Alvani <parham.alvani@gmail.com>
 
 
-" Initialisation
+" Initialization {{{
 " --------------
 
 if !has("gui_running") && &t_Co < 256
@@ -27,6 +27,11 @@ if exists("syntax_on")
 endif
 
 let g:colors_name = "Tomorrow-Night"
+
+" }}}
+
+" Helper Functions {{{
+" ----------------
 
 " Returns an approximate grey index for the given grey level
 function s:grey_number(x)
@@ -166,7 +171,9 @@ function! s:h(group, style)
 
 endfunction
 
-" Palettes
+" }}}
+
+" Palettes {{{
 " --------
 
 let s:white       = "#E8E8E3"
@@ -199,96 +206,104 @@ let s:delbg       = "#f75f5f"
 let s:changefg    = "#d7d7ff"
 let s:changebg    = "#5f5f87"
 
+" }}}
 
-" Highlighting
+" Highlighting {{{
 " ------------
 
 " editor
-call s:h("Normal",        { "fg": s:white,      "bg": s:black })
-call s:h("ColorColumn",   {                     "bg": s:lightblack })
-call s:h("CursorColumn",  {                     "bg": s:lightblack2 })
-call s:h("NonText",       { "fg": s:lightgrey })
-call s:h("Visual",        {                     "bg": s:lightgrey })
-call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
-call s:h("MatchParen",    { "fg": s:black,      "bg": s:lightgrey })
-call s:h("Question",      { "fg": s:yellow })
-call s:h("ModeMsg",       { "fg": s:yellow })
-call s:h("MoreMsg",       { "fg": s:yellow })
-call s:h("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": "standout" })
-call s:h("WarningMsg",    { "fg": s:red })
-call s:h("VertSplit",     { "fg": s:darkgrey,   "bg": s:darkblack })
-call s:h("LineNr",        { "fg": s:springgreen,"bg": s:black })
-call s:h("CursorLine",    {                     "bg": s:lightblack2 })
-call s:h("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
-call s:h("SignColumn",    {                     "bg": s:lightblack })
+call s:h("Normal",       { "fg": s:white,       "bg": s:black })
+call s:h("ColorColumn",  { "bg": s:lightblack })
+call s:h("CursorColumn", { "bg": s:lightblack2 })
+call s:h("NonText",      { "fg": s:lightgrey })
+call s:h("Visual",       { "bg": s:lightgrey })
+call s:h("Search",       { "fg": s:black,       "bg": s:yellow })
+call s:h("MatchParen",   { "fg": s:black,       "bg": s:lightgrey })
+call s:h("Question",     { "fg": s:yellow })
+call s:h("ModeMsg",      { "fg": s:yellow })
+call s:h("MoreMsg",      { "fg": s:yellow })
+call s:h("ErrorMsg",     { "fg": s:black,       "bg": s:red,   "format": "standout" })
+call s:h("WarningMsg",   { "fg": s:red })
+call s:h("VertSplit",    { "fg": s:darkgrey,    "bg": s:darkblack })
+call s:h("LineNr",       { "fg": s:springgreen, "bg": s:black })
+call s:h("CursorLine",   { "bg": s:lightblack2 })
+call s:h("CursorLineNr", { "fg": s:orange,      "bg": s:lightblack })
+call s:h("SignColumn",   { "bg": s:lightblack })
 
 " misc
-call s:h("SpecialKey",    { "fg": s:pink })
-call s:h("Title",         { "fg": s:yellow })
-call s:h("Directory",     { "fg": s:orange })
+call s:h("SpecialKey",   { "fg": s:pink })
+call s:h("Title",        { "fg": s:yellow })
+call s:h("Directory",    { "fg": s:orange })
 
 " diff
-call s:h("DiffAdd",       { "fg": s:addfg,      "bg": s:addbg })
-call s:h("DiffDelete",    { "fg": s:black,      "bg": s:delbg })
-call s:h("DiffChange",    { "fg": s:changefg,   "bg": s:changebg })
-call s:h("DiffText",      { "fg": s:black,      "bg": s:aqua })
+call s:h("DiffAdd",      { "fg": s:addfg,       "bg": s:addbg })
+call s:h("DiffDelete",   { "fg": s:black,       "bg": s:delbg })
+call s:h("DiffChange",   { "fg": s:changefg,    "bg": s:changebg })
+call s:h("DiffText",     { "fg": s:black,       "bg": s:aqua })
 
 " fold
-call s:h("Folded",        { "fg": s:warmgrey,   "bg": s:darkgrey })
-call s:h("FoldColumn",    {                     "bg": s:darkgrey })
+call s:h("Folded",       { "fg": s:warmgrey,    "bg": s:darkgrey })
+call s:h("FoldColumn",   { "bg": s:darkgrey })
 
 " popup menu
-call s:h("Pmenu",         { "fg": s:orange, "bg": s:black })
-call s:h("PmenuSel",      { "fg": s:aqua,       "bg": s:black,        "format": "reverse,bold" })
-call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
+call s:h("Pmenu",        { "fg": s:orange,      "bg": s:black })
+call s:h("PmenuSel",     { "fg": s:aqua,        "bg": s:black, "format": "reverse,bold" })
+call s:h("PmenuThumb",   { "fg": s:lightblack,  "bg": s:grey })
 
-" Generic Syntax Highlighting
+" errors and warning
+call s:h("SpellBad",     { "fg": "#F0B5C3" })
+call s:h("SpellCap",     { "fg": "#F0E2B5" })
+
+" }}}
+
+" Generic Syntax Highlighting {{{
 " ---------------------------
 
+call s:h("Constant",       { "fg": s:purple })
+call s:h("Number",         { "fg": s:tomato1 })
+call s:h("Float",          { "fg": s:tomato1 })
+call s:h("Boolean",        { "fg": s:purple })
+call s:h("Character",      { "fg": s:yellow })
+call s:h("String",         { "fg": s:chartreuse })
 
-call s:h("Constant",      { "fg": s:purple })
-call s:h("Number",        { "fg": s:tomato1 })
-call s:h("Float",         { "fg": s:tomato1 })
-call s:h("Boolean",       { "fg": s:purple })
-call s:h("Character",     { "fg": s:yellow })
-call s:h("String",        { "fg": s:chartreuse })
+call s:h("Type",           { "fg": s:aqua })
+call s:h("Structure",      { "fg": s:aqua })
+call s:h("StorageClass",   { "fg": "#00CED1" })
+call s:h("Typedef",        { "fg": s:aqua })
 
-call s:h("Type",          { "fg": s:aqua })
-call s:h("Structure",     { "fg": s:aqua })
-call s:h("StorageClass",  { "fg": "#00CED1" })
-call s:h("Typedef",       { "fg": s:aqua })
+call s:h("Identifier",     { "fg": s:orange })
+call s:h("Function",       { "fg": s:blue })
 
-call s:h("Identifier",    { "fg": s:orange })
-call s:h("Function",      { "fg": s:blue })
-
-call s:h("Statement",     { "fg": s:pink })
-call s:h("Operator",      { "fg": s:aqua })
-call s:h("Label",         { "fg": s:pink })
-call s:h("Keyword",       { "fg": s:aqua })
+call s:h("Statement",      { "fg": s:pink })
+call s:h("Operator",       { "fg": s:aqua })
+call s:h("Label",          { "fg": s:pink })
+call s:h("Keyword",        { "fg": s:aqua })
 "        Conditional"
 "        Repeat"
 "        Exception"
 
-call s:h("PreProc",       { "fg": "#ff7f50" })
-call s:h("Include",       { "fg": s:pink })
-call s:h("Define",        { "fg": s:pink })
-call s:h("Macro",         { "fg": s:green })
-call s:h("PreCondit",     { "fg": s:green })
+call s:h("PreProc",        { "fg": "#ff7f50" })
+call s:h("Include",        { "fg": s:pink })
+call s:h("Define",         { "fg": s:pink })
+call s:h("Macro",          { "fg": s:green })
+call s:h("PreCondit",      { "fg": s:green })
 
-call s:h("Special",       { "fg": s:purple })
-call s:h("SpecialChar",   { "fg": s:pink })
-call s:h("Delimiter",     { "fg": s:pink })
-call s:h("SpecialComment",{ "fg": s:aqua })
-call s:h("Tag",           { "fg": s:pink })
+call s:h("Special",        { "fg": s:purple })
+call s:h("SpecialChar",    { "fg": s:pink })
+call s:h("Delimiter",      { "fg": s:pink })
+call s:h("SpecialComment", { "fg": s:aqua })
+call s:h("Tag",            { "fg": s:pink })
 "        Debug"
 
-call s:h("Todo",          { "fg": s:orange,   "format": "bold,italic" })
-call s:h("Comment",       { "fg": s:grey,     "format": "italic" })
+call s:h("Todo",           { "fg": s:orange, "format": "bold,italic" })
+call s:h("Comment",        { "fg": s:grey,   "format": "italic" })
 
-call s:h("Ignore",        {})
-call s:h("Error",         { "fg": s:pink, "bg": s:darkred })
+call s:h("Ignore",         { })
+call s:h("Error",          { "fg": s:pink,   "bg": s:darkred })
 
-" NerdTree
+" }}}
+
+" NerdTree {{{
 " --------
 
 call s:h("NERDTreeOpenable",        { "fg": s:yellow })
@@ -302,86 +317,89 @@ call s:h("NERDTreeUp",              { "fg": s:white })
 call s:h("NERDTreeDirSlash",        { "fg": "#EF7C66" })
 call s:h("NERDTreeDir",             { "fg": s:aqua })
 
-" Syntastic
-" ---------
+" }}}
 
-call s:h("SyntasticWarningSign",    { "fg": s:lightblack, "bg": s:orange })
-call s:h("SyntasticErrorSign",     { "fg": s:lightblack, "bg": s:pink })
+" ALE - github.com/dense-analysis/ale {{{
+" -----------------------------------
 
+call s:h("ALEWarningSign", { "fg": s:lightblack, "bg": s:orange })
+call s:h("ALEErrorSign",   { "fg": s:lightblack, "bg": s:pink })
 
-" Language highlight
-" ------------------
+" }}}
+
+" Language Specific Syntax Highlighting {{{
+" -------------------------------------
 
 " Vim command
-call s:h("vimCommand",              { "fg": s:pink })
+call s:h("vimCommand",           { "fg": s:pink })
 
 " c
-call s:h("cType",                  { "fg": s:yellow })
-call s:h("cStorageClass",          { "fg": "#FF7373" })
-call s:h("cConditional",           { "fg": "#00FF00" })
-call s:h("cRepeat",                { "fg": "#00FF00" })
+call s:h("cType",                { "fg": s:yellow })
+call s:h("cStorageClass",        { "fg": "#FF7373" })
+call s:h("cConditional",         { "fg": "#00FF00" })
+call s:h("cRepeat",              { "fg": "#00FF00" })
 
 " cpp
-call s:h("cCustomClass",     { "fg": "#FFDB1A" })
+call s:h("cCustomClass",         { "fg": "#FFDB1A" })
 
 " nasm
-call s:h("nasmGen08Register",          { "fg": "#98F5FF" })
-call s:h("nasmGen16Register",          { "fg": "#98F5FF" })
-call s:h("nasmGen32Register",          { "fg": "#98F5FF" })
-call s:h("nasmGen64Register",          { "fg": "#98F5FF" })
-call s:h("nasmSegRegister",            { "fg": "#53868B" })
+call s:h("nasmGen08Register",    { "fg": "#98F5FF" })
+call s:h("nasmGen16Register",    { "fg": "#98F5FF" })
+call s:h("nasmGen32Register",    { "fg": "#98F5FF" })
+call s:h("nasmGen64Register",    { "fg": "#98F5FF" })
+call s:h("nasmSegRegister",      { "fg": "#53868B" })
 
 " python
-call s:h("pythonInclude",          { "fg": s:purple })
-call s:h("pythonStatement",        { "fg": s:orange })
-call s:h("pythonConditional",      { "fg": s:purple })
-call s:h("pythonException",        { "fg": s:red })
-call s:h("pythonFunction",         { "fg": s:blue })
-call s:h("pythonRepeat",           { "fg": s:aqua })
-call s:h("pythonExClass",          { "fg": s:yellow })
-call s:h("pythonBuiltinFunc",      { "fg": "#FFC125" })
-call s:h("pythonOperator",         { "fg": "#f5deb3" })
-call s:h("pythonBoolean",          { "fg": "#FF4444" })
+call s:h("pythonInclude",        { "fg": s:purple })
+call s:h("pythonStatement",      { "fg": s:orange })
+call s:h("pythonConditional",    { "fg": s:purple })
+call s:h("pythonException",      { "fg": s:red })
+call s:h("pythonFunction",       { "fg": s:blue })
+call s:h("pythonRepeat",         { "fg": s:aqua })
+call s:h("pythonExClass",        { "fg": s:yellow })
+call s:h("pythonBuiltinFunc",    { "fg": "#FFC125" })
+call s:h("pythonOperator",       { "fg": "#f5deb3" })
+call s:h("pythonBoolean",        { "fg": "#FF4444" })
 
 " javascript
-call s:h("jsFuncName",          { "fg": s:blue })
-call s:h("jsThis",              { "fg": s:pink })
-call s:h("jsSuper",             { "fg": s:pink })
-call s:h("jsFunctionKey",       { "fg": s:blue })
-call s:h("jsPrototype",         { "fg": s:pink })
-call s:h("jsExceptions",        { "fg": s:red })
-call s:h("jsFutureKeys",        { "fg": s:aqua })
-call s:h("jsClassDefinition",   { "fg": s:orange })
-call s:h("jsBuiltins",          { "fg": s:aqua })
-call s:h("jsArgsObj",           { "fg": s:aqua })
-call s:h("jsClassMethodType",   { "fg": "#f5deb3" })
-call s:h("jsObjectKey",         { "fg": "#ffd39b" })
-call s:h("jsFuncArgs",          { "fg": s:orange, "format": "italic" })
-call s:h("jsStorageClass",      { "fg": s:aqua })
+call s:h("jsFuncName",           { "fg": s:blue })
+call s:h("jsThis",               { "fg": s:pink })
+call s:h("jsSuper",              { "fg": s:pink })
+call s:h("jsFunctionKey",        { "fg": s:blue })
+call s:h("jsPrototype",          { "fg": s:pink })
+call s:h("jsExceptions",         { "fg": s:red })
+call s:h("jsFutureKeys",         { "fg": s:aqua })
+call s:h("jsClassDefinition",    { "fg": s:orange })
+call s:h("jsBuiltins",           { "fg": s:aqua })
+call s:h("jsArgsObj",            { "fg": s:aqua })
+call s:h("jsClassMethodType",    { "fg": "#f5deb3" })
+call s:h("jsObjectKey",          { "fg": "#ffd39b" })
+call s:h("jsFuncArgs",           { "fg": s:orange, "format": "italic" })
+call s:h("jsStorageClass",       { "fg": s:aqua })
 
 " html
-call s:h("htmlTag",             { "fg": s:white })
-call s:h("htmlEndTag",          { "fg": s:white })
-call s:h("htmlTagName",         { "fg": s:pink })
-call s:h("htmlArg",             { "fg": s:orange })
-call s:h("htmlSpecialChar",     { "fg": s:purple })
+call s:h("htmlTag",              { "fg": s:white })
+call s:h("htmlEndTag",           { "fg": s:white })
+call s:h("htmlTagName",          { "fg": s:pink })
+call s:h("htmlArg",              { "fg": s:orange })
+call s:h("htmlSpecialChar",      { "fg": s:purple })
 
 " go
-call s:h("goDirective",         { "fg": s:purple })
-call s:h("goDeclaration",       { "fg": s:purple })
-call s:h("goStatement",         { "fg": s:purple })
-call s:h("goConditional",       { "fg": s:purple })
-call s:h("goConstants",         { "fg": s:orange })
-call s:h("goTodo",              { "fg": s:yellow })
-call s:h("goDeclType",          { "fg": s:green })
-call s:h("goBuiltins",          { "fg": "#00BFFF" })
-call s:h("goStruct",            { "fg": "#FF531A" })
-call s:h("goStructDef",         { "fg": "#FF531A" })
-call s:h("goMethod",            { "fg": "#CCFF00" })
-call s:h("goVarDefs",           { "fg": "#FF6117" })
-call s:h("goTypeName",          { "fg": "#9FFFC2" })
-call s:h("goReceiverType",      { "fg": "#9FFFC2" })
-call s:h("goTypeConstructor",   { "fg": "#9FFFC2" })
+call s:h("goDirective",          { "fg": s:purple })
+call s:h("goDeclaration",        { "fg": s:purple })
+call s:h("goStatement",          { "fg": s:purple })
+call s:h("goConditional",        { "fg": s:purple })
+call s:h("goConstants",          { "fg": s:orange })
+call s:h("goTodo",               { "fg": s:yellow })
+call s:h("goDeclType",           { "fg": s:green })
+call s:h("goBuiltins",           { "fg": "#00BFFF" })
+call s:h("goStruct",             { "fg": "#FF531A" })
+call s:h("goStructDef",          { "fg": "#FF531A" })
+call s:h("goMethod",             { "fg": "#CCFF00" })
+call s:h("goVarDefs",            { "fg": "#FF6117" })
+call s:h("goTypeName",           { "fg": "#9FFFC2" })
+call s:h("goReceiverType",       { "fg": "#9FFFC2" })
+call s:h("goTypeConstructor",    { "fg": "#9FFFC2" })
 
 " erlang
 call s:h("erlangGlobalFuncCall", { "fg": "#CCFF00" })
@@ -390,12 +408,13 @@ call s:h("erlangLocalFuncCall",  { "fg": "#3399FF" })
 call s:h("erlangLocalFuncRef",   { "fg": "#3399FF" })
 call s:h("erlangAtom",           { "fg": "#FF9933" })
 
-
 " git
-call s:h("diffAdded",           { "fg": s:green })
-call s:h("diffRemoved",         { "fg": s:red })
-call s:h("diffCommitSummary",   { "format": "bold" })
+call s:h("diffAdded",            { "fg": s:green })
+call s:h("diffRemoved",          { "fg": s:red })
+call s:h("diffCommitSummary",    { "format": "bold" })
 
 " json
-call s:h("jsonKeyword",         { "fg": s:orange })
-call s:h("jsonBraces",          { "fg": "#2ABDDC" })
+call s:h("jsonKeyword",          { "fg": s:orange })
+call s:h("jsonBraces",           { "fg": "#2ABDDC" })
+
+" }}}
