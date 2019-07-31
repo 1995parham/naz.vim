@@ -150,12 +150,12 @@ function! s:h(group, style)
 		let s:ctermformat = a:style.format
 		let s:guiformat = a:style.format
 	endif
-	if g:tomorrow_night_term_italic == 0
+	if g:velenjak_term_italic == 0
 		let s:ctermformat = substitute(s:ctermformat, ',italic', '', '')
 		let s:ctermformat = substitute(s:ctermformat, 'italic,', '', '')
 		let s:ctermformat = substitute(s:ctermformat, 'italic', '', '')
 	endif
-	if g:tomorrow_night_gui_italic == 0
+	if g:velenjak_gui_italic == 0
 		let s:guiformat = substitute(s:guiformat, ',italic', '', '')
 		let s:guiformat = substitute(s:guiformat, 'italic,', '', '')
 		let s:guiformat = substitute(s:guiformat, 'italic', '', '')
