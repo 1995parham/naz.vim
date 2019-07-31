@@ -5,5 +5,5 @@ steps:
   - name: lint
     image: python
     commands:
-      - pip install vint
+      - pip install vim-vint
       - vint -c --enable-neovim colors/Tomorrow-Night.vim
