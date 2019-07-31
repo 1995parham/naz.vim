@@ -11,12 +11,12 @@ if !has('gui_running') && &t_Co < 256
 	finish
 endif
 
-if !exists('g:tomorrow_night_gui_italic')
-	let g:tomorrow_night_gui_italic = 1
+if !exists('g:velenjak_gui_italic')
+	let g:velenjak_gui_italic = 1
 endif
 
-if !exists('g:tomorrow_night_term_italic')
-	let g:tomorrow_night_term_italic = 0
+if !exists('g:velenjak_term_italic')
+	let g:velenjak_term_italic = 0
 endif
 
 set background=dark
@@ -26,7 +26,7 @@ if exists('syntax_on')
 	syntax reset
 endif
 
-let g:colors_name = 'Tomorrow-Night'
+let g:colors_name = 'velenjak'
 
 " }}}
 
