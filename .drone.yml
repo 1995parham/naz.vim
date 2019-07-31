@@ -6,4 +6,4 @@ steps:
     image: python
     commands:
       - pip install vim-vint
-      - vint -c --enable-neovim colors/Tomorrow-Night.vim
+      - vint -c --enable-neovim colors/velenjak.vim
