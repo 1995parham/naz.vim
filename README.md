@@ -1,5 +1,5 @@
 # Velenjak Neovim Theme
-[![Drone (cloud)](https://img.shields.io/drone/build/1995parham/velenjak.svg?style=flat-square)](https://cloud.drone.io/1995parham/velenjak)
+[![Drone (cloud)](https://img.shields.io/drone/build/1995parham/velenjak.vim.svg?style=flat-square)](https://cloud.drone.io/1995parham/velenjak.vim)
 
 ## Introduction
  Velenjak (Persian: ولنجک) is an affluent neighbourhood, northwest of Tehran, in Iran [read more](https://en.wikipedia.org/wiki/Velenjak).
