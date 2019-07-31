@@ -1,0 +1,9 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: lint
+    image: python
+    commands:
+      - pip install vint
+      - vint -c --enable-neovim colors/Tomorrow-Night.vim
