@@ -17,3 +17,6 @@ Velenjak theme is based on Tomorrow theme and I named it because it is colorful 
 
 ### Python
 ![python sample](screenshots/python.png)
+
+### Go
+![python sample](screenshots/go.png)
