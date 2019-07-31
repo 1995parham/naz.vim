@@ -1,8 +1,9 @@
-# tomorrow-night-vim
-[![Drone (cloud)](https://img.shields.io/drone/build/1995parham/tomorrow-night-vim.svg?style=flat-square)](https://cloud.drone.io/1995parham/tomorrow-night-vim)
+# Velenjak Neovim Theme
+[![Drone (cloud)](https://img.shields.io/drone/build/1995parham/velenjak.svg?style=flat-square)](https://cloud.drone.io/1995parham/velenjak)
 
 ## Introduction
-Parham's modification of Tomorrow Night vim theme and provide it with better highlighting in C, Go, Node, etc.
+ Velenjak (Persian: ولنجک) is an affluent neighbourhood, northwest of Tehran, in Iran [read more](https://en.wikipedia.org/wiki/Velenjak).
+Velenjak theme is based on Tomorrow theme and I named it because it is colorful as Velenjak shopping centers.
 
 ## Recomendations
 - [vim-airline-theme](https://github.com/vim-airline/vim-airline): tomorrow
