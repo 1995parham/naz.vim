@@ -317,47 +317,77 @@ call s:h('WildMenu',         { })
 " Syntax Groups (descriptions and ordering from `:h w18`) {{{
 " -------------------------------------------------------
 
-call s:h('Constant',       { 'fg': s:purple })
-call s:h('Number',         { 'fg': s:tomato1 })
-call s:h('Float',          { 'fg': s:tomato1 })
-call s:h('Boolean',        { 'fg': s:purple })
-call s:h('Character',      { 'fg': s:yellow })
-call s:h('String',         { 'fg': s:chartreuse })
-
-call s:h('Type',           { 'fg': s:aqua })
-call s:h('Structure',      { 'fg': s:aqua })
-call s:h('StorageClass',   { 'fg': '#00CED1' })
-call s:h('Typedef',        { 'fg': s:aqua })
-
-call s:h('Identifier',     { 'fg': s:orange })
-call s:h('Function',       { 'fg': s:blue })
-
-call s:h('Statement',      { 'fg': s:pink })
-call s:h('Operator',       { 'fg': s:aqua })
-call s:h('Label',          { 'fg': s:pink })
-call s:h('Keyword',        { 'fg': s:aqua })
-"        Conditional"
-"        Repeat"
-"        Exception"
-
-call s:h('PreProc',        { 'fg': '#ff7f50' })
-call s:h('Include',        { 'fg': s:pink })
-call s:h('Define',         { 'fg': s:pink })
-call s:h('Macro',          { 'fg': s:green })
-call s:h('PreCondit',      { 'fg': s:green })
-
-call s:h('Special',        { 'fg': s:purple })
-call s:h('SpecialChar',    { 'fg': s:pink })
-call s:h('Delimiter',      { 'fg': s:pink })
-call s:h('SpecialComment', { 'fg': s:aqua })
-call s:h('Tag',            { 'fg': s:pink })
-"        Debug"
-
-call s:h('Todo',           { 'fg': s:orange, 'format': 'bold,italic' })
+" any comment
 call s:h('Comment',        { 'fg': s:grey,   'format': 'italic' })
-
+" any constant
+call s:h('Constant',       { 'fg': s:purple })
+" string constant: "this is a string"
+call s:h('String',         { 'fg': s:chartreuse })
+" a character constant: 'c', '\n'
+call s:h('Character',      { 'fg': s:yellow })
+" a number constant: 234, 0xff
+call s:h('Number',         { 'fg': s:tomato1 })
+" a boolean constant: TRUE, false
+call s:h('Boolean',        { 'fg': s:purple })
+" a floating point constant: 2.3e10
+call s:h('Float',          { 'fg': s:tomato1 })
+" any variable name
+call s:h('Identifier',     { 'fg': s:orange })
+" function name (also: methods for classes)
+call s:h('Function',       { 'fg': s:blue })
+" any statement
+call s:h('Statement',      { 'fg': s:pink })
+" if, then, else, endif, switch, etc.
+call s:h('Conditional',    { })
+" for, do, while, etc.
+call s:h('Repeat',         { })
+" case, default, etc.
+call s:h('Label',          { 'fg': s:pink })
+" sizeof", "+", "*", etc.
+call s:h('Operator',       { 'fg': s:aqua })
+" any other keyword
+call s:h('Keyword',        { 'fg': s:aqua })
+" try, catch, throw
+call s:h('Exception',      { })
+" generic Preprocessor
+call s:h('PreProc',        { 'fg': '#FF7F50' })
+" preprocessor #include
+call s:h('Include',        { 'fg': s:pink })
+" preprocessor #define
+call s:h('Define',         { 'fg': s:pink })
+" same as Define
+call s:h('Macro',          { 'fg': s:green })
+" preprocessor #if, #else, #endif, etc.
+call s:h('PreCondit',      { 'fg': s:green })
+" int, long, char, etc.
+call s:h('Type',           { 'fg': s:aqua })
+" static, register, volatile, etc.
+call s:h('StorageClass',   { 'fg': '#00CED1' })
+" struct, union, enum, etc.
+call s:h('Structure',      { 'fg': s:aqua })
+" A typedef
+call s:h('Typedef',        { 'fg': s:aqua })
+" any special symbol
+call s:h('Special',        { 'fg': s:purple })
+" special character in a constant
+call s:h('SpecialChar',    { 'fg': s:pink })
+" you can use CTRL-] on this
+call s:h('Tag',            { 'fg': s:pink })
+" character that needs attention
+call s:h('Delimiter',      { 'fg': s:pink })
+" special things inside a comment
+call s:h('SpecialComment', { 'fg': s:aqua })
+" debugging statements
+call s:h('Debug',          { })
+" text that stands out, HTML links
+call s:h('Underlined',     { 'fg': s:aqua,   'format': 'underline' })
+" left blank, hidden
 call s:h('Ignore',         { })
+" any erroneous construct
 call s:h('Error',          { 'fg': s:pink,   'bg': s:darkred })
+" anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+call s:h('Todo',           { 'fg': s:orange, 'format': 'bold,italic' })
+
 
 " }}}
 
