@@ -297,7 +297,7 @@ call s:h('SpellRare',        { 'fg': '#F0E2B5' })
 " status line of current window
 call s:h('StatusLine',       { })
 " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-call s:h('StatusLineNC',     { })
+call s:h('StatusLineNC',     { 'fg': s:warmgrey })
 " status line of current :terminal window
 call s:h('StatusLineTerm',   { })
 " status line of non-current :terminal window
