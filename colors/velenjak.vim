@@ -182,29 +182,38 @@ let s:lightblack  = '#2D2E27'
 let s:lightblack2 = '#383A3E'
 let s:darkblack   = '#211F1C'
 let s:grey        = '#8F908A'
-let s:lightgrey   = '#575b61'
-let s:darkgrey    = '#3c3c3c'
-let s:warmgrey    = '#907d57'
+let s:lightgrey   = '#575B61'
+let s:darkgrey    = '#3C3C3C'
+let s:warmgrey    = '#907D57'
 
-let s:pink        = '#F92772'
-let s:green       = '#8ad000'
-let s:springgreen = '#00ff7f'
-let s:aqua        = '#66D9EF'
-let s:yellow      = '#E6DB74'
-let s:orange      = '#FD9720'
-let s:sienna1     = '#ff8247'
-let s:tomato1     = '#ff6347'
-let s:purple      = '#EE82EE'
-let s:chartreuse  = '#7fff00'
-let s:red         = '#e73c50'
-let s:blue        = '#198CFF'
-let s:darkred     = '#5f0000'
+let s:pink          = '#F92772' " bright pink
+let s:green         = '#8AD000' " strong green
+let s:springgreen   = '#00FF7F'
+let s:aqua          = '#66D9EF'
+let s:yellow        = '#E6DB74'
+let s:orange        = '#FD9720'
+let s:lightorange   = '#FF8247'
+let s:tomato        = '#FF6347'
+let s:purple        = '#EE82EE'
+let s:chartreuse    = '#7FFF00'
+let s:red           = '#E73C50'
+let s:blue          = '#00BFFF' " deep sky blue
+let s:vividblue     = '#198CFF'
+let s:lightblue     = '#00BFFF'
+let s:darkred       = '#5F0000'
+let s:darkturquoise = '#00CED1'
+let s:coral         = '#FF7F50'
+let s:softred       = '#EF7C66'
+let s:vividyellow   = '#FFD517'
+let s:vividorange   = '#FF6117'
+let s:limegreen     = '#9FFFC2'
+let s:camel         = '#C19A6B'
 
-let s:addfg       = '#d7ffaf'
-let s:addbg       = '#5f875f'
-let s:delbg       = '#f75f5f'
-let s:changefg    = '#d7d7ff'
-let s:changebg    = '#5f5f87'
+let s:addfg       = '#D7FFAF'
+let s:addbg       = '#5F875F'
+let s:delbg       = '#F75F5F'
+let s:changefg    = '#D7D7FF'
+let s:changebg    = '#5F5F87'
 
 " }}}
 
@@ -326,11 +335,11 @@ call s:h('String',         { 'fg': s:chartreuse })
 " a character constant: 'c', '\n'
 call s:h('Character',      { 'fg': s:yellow })
 " a number constant: 234, 0xff
-call s:h('Number',         { 'fg': s:tomato1 })
+call s:h('Number',         { 'fg': s:tomato })
 " a boolean constant: TRUE, false
 call s:h('Boolean',        { 'fg': s:purple })
 " a floating point constant: 2.3e10
-call s:h('Float',          { 'fg': s:tomato1 })
+call s:h('Float',          { 'fg': s:tomato })
 " any variable name
 call s:h('Identifier',     { 'fg': s:orange })
 " function name (also: methods for classes)
@@ -338,9 +347,9 @@ call s:h('Function',       { 'fg': s:blue })
 " any statement
 call s:h('Statement',      { 'fg': s:pink })
 " if, then, else, endif, switch, etc.
-call s:h('Conditional',    { })
+call s:h('Conditional',    { 'fg': s:lightorange })
 " for, do, while, etc.
-call s:h('Repeat',         { })
+call s:h('Repeat',         { 'fg': s:lightorange })
 " case, default, etc.
 call s:h('Label',          { 'fg': s:pink })
 " sizeof", "+", "*", etc.
@@ -350,7 +359,7 @@ call s:h('Keyword',        { 'fg': s:aqua })
 " try, catch, throw
 call s:h('Exception',      { })
 " generic Preprocessor
-call s:h('PreProc',        { 'fg': '#FF7F50' })
+call s:h('PreProc',        { 'fg': s:coral })
 " preprocessor #include
 call s:h('Include',        { 'fg': s:pink })
 " preprocessor #define
@@ -362,7 +371,7 @@ call s:h('PreCondit',      { 'fg': s:green })
 " int, long, char, etc.
 call s:h('Type',           { 'fg': s:aqua })
 " static, register, volatile, etc.
-call s:h('StorageClass',   { 'fg': '#00CED1' })
+call s:h('StorageClass',   { 'fg': s:darkturquoise })
 " struct, union, enum, etc.
 call s:h('Structure',      { 'fg': s:aqua })
 " A typedef
@@ -404,7 +413,7 @@ call s:h('NERDTreeBookmarksLeader', { 'fg': s:black })
 call s:h('NERDTreeBookmarkName',    { 'fg': s:yellow })
 call s:h('NERDTreeCWD',             { 'fg': s:orange })
 call s:h('NERDTreeUp',              { 'fg': s:white })
-call s:h('NERDTreeDirSlash',        { 'fg': '#EF7C66' })
+call s:h('NERDTreeDirSlash',        { 'fg': s:softred })
 call s:h('NERDTreeDir',             { 'fg': s:aqua })
 
 " dense-analysis/ale
@@ -473,22 +482,20 @@ call s:h('htmlSpecialChar',      { 'fg': s:purple })
 
 " go
 call s:h('goDirective',          { 'fg': s:purple })
-call s:h('goDeclaration',        { 'fg': s:purple })
-call s:h('goStatement',          { 'fg': s:purple })
-call s:h('goConditional',        { 'fg': s:purple })
 call s:h('goConstants',          { 'fg': s:orange })
 call s:h('goTodo',               { 'fg': s:yellow })
-call s:h('goDeclType',           { 'fg': s:green })
-call s:h('goFunctionCall',       { 'fg': '#FFA700' })
-call s:h('goBuiltins',           { 'fg': '#00BFFF' })
-call s:h('goStruct',             { 'fg': '#FF531A' })
-call s:h('goStructDef',          { 'fg': '#FF531A' })
-call s:h('goMethod',             { 'fg': '#CCFF00' })
-call s:h('goVarDefs',            { 'fg': '#FF6117' })
-call s:h('goVarAssign',          { 'fg': '#FF6117' })
-call s:h('goTypeName',           { 'fg': '#9FFFC2' })
-call s:h('goReceiverType',       { 'fg': '#9FFFC2' })
-call s:h('goTypeConstructor',    { 'fg': '#9FFFC2' })
+call s:h('goDeclType',           { 'fg': s:coral })
+call s:h('goFunctionCall',       { 'fg': s:blue })
+call s:h('goBuiltins',           { 'fg': s:camel })
+call s:h('goMethod',             { 'fg': s:blue })
+call s:h('goVarDefs',            { 'fg': s:vividyellow })
+call s:h('goDeclaration',        { 'fg': s:purple })
+call s:h('goVarAssign',          { 'fg': s:purple })
+call s:h('goVar',                { 'fg': s:purple })
+call s:h('goConst',              { 'fg': s:purple })
+call s:h('goTypeName',           { 'fg': s:limegreen })
+call s:h('goReceiverType',       { 'fg': s:limegreen })
+call s:h('goTypeConstructor',    { 'fg': s:limegreen })
 
 " erlang
 call s:h('erlangGlobalFuncCall', { 'fg': '#CCFF00' })
