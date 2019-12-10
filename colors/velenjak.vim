@@ -497,6 +497,9 @@ call s:h('goTypeName',           { 'fg': s:limegreen })
 call s:h('goReceiverType',       { 'fg': s:limegreen })
 call s:h('goTypeConstructor',    { 'fg': s:limegreen })
 
+" rust
+call s:h('rustMacro', { 'fg': s:vividyellow })
+
 " erlang
 call s:h('erlangGlobalFuncCall', { 'fg': '#CCFF00' })
 call s:h('erlangGlobalFuncRef',  { 'fg': '#CCFF00' })
