@@ -177,7 +177,7 @@ endfunction
 " --------
 
 let s:white       = '#E8E8E3'
-let s:black       = '#3C3C3C'
+let s:black       = '#323232'
 let s:lightblack  = '#2D2E27'
 let s:lightblack2 = '#383A3E'
 let s:darkblack   = '#211F1C'
@@ -208,6 +208,7 @@ let s:vividyellow   = '#FFD517'
 let s:vividorange   = '#FF6117'
 let s:limegreen     = '#9FFFC2'
 let s:camel         = '#C19A6B'
+let s:crimson       = '#DC143C'
 
 let s:addfg       = '#D7FFAF'
 let s:addbg       = '#5F875F'
@@ -247,7 +248,7 @@ call s:h('EndOfBuffer',      { 'fg': s:black })
 " error messages on the command line
 call s:h('ErrorMsg',         { 'fg': s:black,       'bg': s:red,   'format': 'standout' })
 " the column separating vertically split windows
-call s:h('VertSplit',        { 'fg': s:darkgrey,    'bg': s:darkblack })
+call s:h('VertSplit',        { 'fg': s:black,      'bg': s:orange })
 " line used for closed folds
 call s:h('Folded',           { 'fg': s:warmgrey,    'bg': s:darkgrey })
 " 'foldcolumn'
@@ -481,21 +482,22 @@ call s:h('htmlArg',              { 'fg': s:orange })
 call s:h('htmlSpecialChar',      { 'fg': s:purple })
 
 " go
-call s:h('goDirective',          { 'fg': s:purple })
-call s:h('goConstants',          { 'fg': s:orange })
-call s:h('goTodo',               { 'fg': s:yellow })
-call s:h('goDeclType',           { 'fg': s:coral })
-call s:h('goFunctionCall',       { 'fg': s:blue })
-call s:h('goBuiltins',           { 'fg': s:camel })
-call s:h('goMethod',             { 'fg': s:blue })
-call s:h('goVarDefs',            { 'fg': s:vividyellow })
-call s:h('goDeclaration',        { 'fg': s:purple })
-call s:h('goVarAssign',          { 'fg': s:purple })
-call s:h('goVar',                { 'fg': s:purple })
-call s:h('goConst',              { 'fg': s:purple })
-call s:h('goTypeName',           { 'fg': s:limegreen })
-call s:h('goReceiverType',       { 'fg': s:limegreen })
-call s:h('goTypeConstructor',    { 'fg': s:limegreen })
+call s:h('goDirective',             { 'fg': s:purple })
+call s:h('goConstants',             { 'fg': s:orange })
+call s:h('goTodo',                  { 'fg': s:yellow })
+call s:h('goDeclType',              { 'fg': s:coral })
+call s:h('goFunctionCall',          { 'fg': s:blue })
+call s:h('goBuiltins',              { 'fg': s:camel })
+call s:h('goPredefinedIdentifiers', { 'fg': s:crimson })
+call s:h('goMethod',                { 'fg': s:blue })
+call s:h('goVarDefs',               { 'fg': s:vividyellow })
+call s:h('goDeclaration',           { 'fg': s:purple })
+call s:h('goVarAssign',             { 'fg': s:purple })
+call s:h('goVar',                   { 'fg': s:purple })
+call s:h('goConst',                 { 'fg': s:purple })
+call s:h('goTypeName',              { 'fg': s:limegreen })
+call s:h('goReceiverType',          { 'fg': s:limegreen })
+call s:h('goTypeConstructor',       { 'fg': s:limegreen })
 
 " rust
 call s:h('rustMacro',            { 'fg': s:vividyellow })
