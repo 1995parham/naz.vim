@@ -1,4 +1,6 @@
+---
 kind: pipeline
+type: docker
 name: default
 
 steps:
@@ -6,4 +8,4 @@ steps:
     image: python
     commands:
       - pip install vim-vint
-      - vint -c --enable-neovim colors/velenjak.vim
+      - vint -c --enable-neovim colors/naz.vim
