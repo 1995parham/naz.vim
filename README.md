@@ -2,7 +2,7 @@
 [![Drone (cloud)](https://img.shields.io/drone/build/1995parham/naz.vim.svg?style=flat-square)](https://cloud.drone.io/1995parham/naz.vim)
 
 ## Introduction
-Naz theme is based on Tomorrow theme and I named it because it is very cute.
+Naz theme is based on the Tomorrow theme, and I named it because it is so cute.
 
 ## Recomendations
 - [vim-airline-theme](https://github.com/vim-airline/vim-airline): tomorrow
