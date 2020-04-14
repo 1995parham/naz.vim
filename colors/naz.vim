@@ -1,4 +1,4 @@
-" In The Name Of God
+" In The Name of God
 " Tomorrow Night 24bit Color Theme
 " Last Change:	2019-Jul-30
 " Maintainer:	Parham Alvani <parham.alvani@gmail.com>
@@ -11,12 +11,12 @@ if !has('gui_running') && &t_Co < 256
 	finish
 endif
 
-if !exists('g:velenjak_gui_italic')
-	let g:velenjak_gui_italic = 1
+if !exists('g:naz_gui_italic')
+	let g:naz_gui_italic = 1
 endif
 
-if !exists('g:velenjak_term_italic')
-	let g:velenjak_term_italic = 0
+if !exists('g:naz_term_italic')
+	let g:naz_term_italic = 0
 endif
 
 set background=dark
@@ -26,7 +26,7 @@ if exists('syntax_on')
 	syntax reset
 endif
 
-let g:colors_name = 'velenjak'
+let g:colors_name = 'naz'
 
 " }}}
 
@@ -150,12 +150,12 @@ function! s:h(group, style)
 		let s:ctermformat = a:style.format
 		let s:guiformat = a:style.format
 	endif
-	if g:velenjak_term_italic == 0
+	if g:naz_term_italic == 0
 		let s:ctermformat = substitute(s:ctermformat, ',italic', '', '')
 		let s:ctermformat = substitute(s:ctermformat, 'italic,', '', '')
 		let s:ctermformat = substitute(s:ctermformat, 'italic', '', '')
 	endif
-	if g:velenjak_gui_italic == 0
+	if g:naz_gui_italic == 0
 		let s:guiformat = substitute(s:guiformat, ',italic', '', '')
 		let s:guiformat = substitute(s:guiformat, 'italic,', '', '')
 		let s:guiformat = substitute(s:guiformat, 'italic', '', '')
