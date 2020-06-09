@@ -186,29 +186,31 @@ let s:lightgrey   = '#575B61'
 let s:darkgrey    = '#3C3C3C'
 let s:warmgrey    = '#907D57'
 
-let s:pink          = '#F92772' " bright pink
-let s:green         = '#8AD000' " strong green
-let s:springgreen   = '#00FF7F'
-let s:aqua          = '#66D9EF'
-let s:yellow        = '#E6DB74'
-let s:orange        = '#FD9720'
-let s:lightorange   = '#FF8247'
-let s:tomato        = '#FF6347'
-let s:purple        = '#EE82EE'
-let s:chartreuse    = '#7FFF00'
-let s:red           = '#E73C50'
-let s:blue          = '#00BFFF' " deep sky blue
-let s:vividblue     = '#198CFF'
-let s:lightblue     = '#00BFFF'
-let s:darkred       = '#5F0000'
-let s:darkturquoise = '#00CED1'
-let s:coral         = '#FF7F50'
-let s:softred       = '#EF7C66'
-let s:vividyellow   = '#FFD517'
-let s:vividorange   = '#FF6117'
-let s:limegreen     = '#9FFFC2'
-let s:camel         = '#C19A6B'
-let s:crimson       = '#DC143C'
+let s:pink            = '#F92772' " bright pink
+let s:green           = '#8AD000' " strong green
+let s:springgreen     = '#00FF7F'
+let s:aqua            = '#66D9EF'
+let s:yellow          = '#E6DB74'
+let s:orange          = '#FD9720'
+let s:lightorange     = '#FF8247'
+let s:tomato          = '#FF6347'
+let s:purple          = '#EE82EE'
+let s:chartreuse      = '#7FFF00'
+let s:red             = '#E73C50'
+let s:blue            = '#00BFFF' " deep sky blue
+let s:vividblue       = '#198CFF'
+let s:lightblue       = '#00BFFF'
+let s:darkred         = '#5F0000'
+let s:darkturquoise   = '#00CED1'
+let s:coral           = '#FF7F50'
+let s:softred         = '#EF7C66'
+let s:vividyellow     = '#FFD517'
+let s:lightyellow     = '#FFFF66'
+let s:verylightorange = '#FFD280'
+let s:vividorange     = '#FF6117'
+let s:limegreen       = '#9FFFC2'
+let s:camel           = '#C19A6B'
+let s:crimson         = '#DC143C'
 
 let s:addfg       = '#D7FFAF'
 let s:addbg       = '#5F875F'
@@ -500,7 +502,15 @@ call s:h('goReceiverType',          { 'fg': s:limegreen })
 call s:h('goTypeConstructor',       { 'fg': s:limegreen })
 
 " rust
-call s:h('rustMacro',            { 'fg': s:vividyellow })
+call s:h('rsLibraryMacro',     { 'fg': s:verylightorange })
+call s:h('rsModPath',          { 'fg': s:purple })
+call s:h('rsModPathSep',       { 'fg': s:lightyellow })
+call s:h('rsRepeat',           { 'fg': '#66FFFF' })
+call s:h('rsKeyword',          { 'fg': '#CCFF00' })
+call s:h('rsUserMethod',       { 'fg': '#FF9966' })
+call s:h('rsUserIdent',        { 'fg': '#CCCCFF' })
+call s:h('rsIdentDef',         { 'fg': '#CCCCFF' })
+call s:h('rsUserType',         { 'fg': '#99FF00' })
 
 " erlang
 call s:h('erlangGlobalFuncCall', { 'fg': '#CCFF00' })
