@@ -406,6 +406,10 @@ call s:h('Todo',           { 'fg': s:orange, 'format': 'bold,italic' })
 " Plugin Highlighting {{{
 " -------------------
 
+" glepnir/dashboard-nvim
+
+call s:h('dashboardHeader', { 'fg': '#ffba00' })
+
 " scrooloose/nerdtree
 
 call s:h('NERDTreeOpenable',        { 'fg': s:yellow })
