@@ -1,0 +1,43 @@
+local Color = require('colorbuddy.color').Color
+
+Color.new('white'       , '#E8E8E3')
+Color.new('black'       , '#323232')
+Color.new('lightblack'  , '#2D2E27')
+Color.new('lightblack2' , '#383A3E')
+Color.new('darkblack'   , '#211F1C')
+Color.new('grey'        , '#8F908A')
+Color.new('lightgrey'   , '#575B61')
+Color.new('darkgrey'    , '#3C3C3C')
+Color.new('warmgrey'    , '#907D57')
+
+Color.new('pink'            , '#F92772') -- bright pink
+Color.new('green'           , '#8AD000') -- strong green
+Color.new('springgreen'     , '#00FF7F')
+Color.new('aqua'            , '#66D9EF')
+Color.new('yellow'          , '#E6DB74')
+Color.new('orange'          , '#FD9720')
+Color.new('lightorange'     , '#FF8247')
+Color.new('tomato'          , '#FF6347')
+Color.new('purple'          , '#EE82EE')
+Color.new('chartreuse'      , '#7FFF00')
+Color.new('red'             , '#E73C50')
+Color.new('blue'            , '#00BFFF') -- deep sky blue
+Color.new('vividblue'       , '#198CFF')
+Color.new('lightblue'       , '#00BFFF')
+Color.new('darkred'         , '#5F0000')
+Color.new('darkturquoise'   , '#00CED1')
+Color.new('coral'           , '#FF7F50')
+Color.new('softred'         , '#EF7C66')
+Color.new('vividyellow'     , '#FFD517')
+Color.new('lightyellow'     , '#FFFF66')
+Color.new('verylightorange' , '#FFD280')
+Color.new('vividorange'     , '#FF6117')
+Color.new('limegreen'       , '#9FFFC2')
+Color.new('camel'           , '#C19A6B')
+Color.new('crimson'         , '#DC143C')
+
+Color.new('addfg'    , '#D7FFAF')
+Color.new('addbg'    , '#5F875F')
+Color.new('delbg'    , '#F75F5F')
+Color.new('changefg' , '#D7D7FF')
+Color.new('changebg' , '#5F5F87')
