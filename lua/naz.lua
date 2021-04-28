@@ -2,6 +2,7 @@
 -- Description:  
 -- Author:       parham.alvani@gmail.com
 -- Website:      https://github.com/1995parham/naz.vim
+
 -- setup colorbuddy
 local Group = require('colorbuddy.group').Group
 local c = require('colorbuddy.color').colors
@@ -189,3 +190,55 @@ Group.new('Ignore', c.none, c.none, no)
 Group.new('Error', c.pink, c.darkred, no)
 -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 Group.new('Todo', c.orange, c.none, b + i)
+
+Group.new('goDirective', c.purple, c.none, no)
+Group.new('goConstants', c.orange, c.none, no)
+Group.new('goTodo', c.yellow, c.none, no)
+Group.new('goDeclType', c.coral, c.none, no)
+Group.new('goFunctionCall', c.blue, c.none, no)
+Group.new('goBuiltins', c.camel, c.none, no)
+Group.new('goPredefinedIdentifiers', c.crimson, c.none, no)
+Group.new('goMethod', c.blue, c.none, no)
+Group.new('goVarDefs', c.vividyellow, c.none, no)
+Group.new('goDeclaration', c.purple, c.none, no)
+Group.new('goVarAssign', c.purple, c.none, no)
+Group.new('goVar', c.purple, c.none, no)
+Group.new('goConst', c.purple, c.none, no)
+Group.new('goTypeName', c.limegreen, c.none, no)
+Group.new('goReceiverType', c.limegreen, c.none, no)
+Group.new('goTypeConstructor', c.limegreen, c.none, no)
+
+Group.new('jsonKeyword', c.orange, c.none, no)
+
+Group.new('TSFloat', g.Float, c.none, no)
+Group.new('TSFunction', g.Function, c.none, no)
+Group.new('TSType', g.Type, c.none, no)
+Group.new('TSTypeBuiltin', g.Type, c.none, no)
+Group.new('TSLabel', g.Label, c.none, no)
+Group.new('TSCharacter', g.Character, c.none, no)
+Group.new('TSConditional', g.Conditional, c.none, no)
+Group.new('TSConstant', g.Constant, c.none, no)
+Group.new('TSConstBuiltin', g.Constant, c.none, no)
+Group.new('TSConstMacro', g.Constant, c.none, no)
+Group.new('TSFuncBuiltin', g.Function, c.none, no)
+Group.new("TSMethod", g.Function, c.none, no)
+Group.new('TSStructure', g.Structure, c.none, no)
+Group.new('TSTagDelimiter', g.Delimiter, c.none, no)
+Group.new('TSNumber', g.Number, c.none, no)
+Group.new('TSFuncMacro', g.Function, c.none, no)
+Group.new('TSInclude', g.Include, c.none, no)
+Group.new('TSKeyword', g.Keyword, c.none, no)
+Group.new('TSException', g.Exception, c.none, no)
+Group.new('TSBoolean', g.Boolean, c.none, no)
+Group.new('TSError', g.Error, c.none, no)
+Group.new('TSString', g.String, c.none, no)
+Group.new('TSStringEscape', c.orange, c.none, no)
+Group.new('TSStringRegex', c.red, c.none, no)
+Group.new('TSProperty', c.cyan, c.none, no)
+Group.new('TSField', c.purple, c.none, no)
+Group.new('TSParameter', c.cyan, c.none, no)
+Group.new('TSVariable', c.vivid_orange, c.none, no)
+Group.new('TSPunctBracket', c.white, c.none, no)
+Group.new('TSOperator', c.white, c.none, no)
+Group.new('TSVariableBuiltin', c.orange, c.none, no)
+Group.new('TSConstructor', c.yellow, c.none, no)
