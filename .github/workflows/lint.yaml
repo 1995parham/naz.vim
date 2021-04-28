@@ -14,8 +14,3 @@ jobs:
         uses: nebularg/actions-luacheck@v1
         with:
           files: lua
-
-          config: |
-            globals = {
-                "vim"
-            }
