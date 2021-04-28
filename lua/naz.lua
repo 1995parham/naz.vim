@@ -1,5 +1,5 @@
 -- Name:         naz.vim
--- Description:  
+-- Description:
 -- Author:       parham.alvani@gmail.com
 -- Website:      https://github.com/1995parham/naz.vim
 -- setup colorbuddy
@@ -10,11 +10,11 @@ local s = require('colorbuddy.style').styles
 
 local b = s.bold
 local i = s.italic
-local uc = s.undercurl
+-- local uc = s.undercurl
 local ul = s.underline
 local r = s.reverse
 local no = s.NONE
-local global = vim.g
+-- local global = vim.g
 
 require('color')
 
@@ -64,7 +64,8 @@ Group.new('MatchParen', c.black, c.lightgrey, no)
 Group.new('ModeMsg', c.yellow, c.none, no)
 -- more-prompt
 Group.new('MoreMsg', c.yellow, c.none, no)
--- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
+-- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not
+-- really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
 Group.new('NonText', c.lightgrey, c.none, no)
 -- normal text
 Group.new('Normal', c.white, c.black, no)
@@ -82,19 +83,23 @@ Group.new('Question', c.yellow, c.none, no)
 Group.new('QuickFixLine', c.none, c.none, no)
 -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 Group.new('Search', c.black, c.yellow, no)
--- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
+-- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'.
+-- Generally: text that is displayed differently from what it really is.
 Group.new('SpecialKey', c.pink, c.none, no)
 -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 Group.new('SpellBad', c.very_soft_red, c.none, no)
 -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
 Group.new('SpellCap', c.very_soft_yellow, c.none, no)
--- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
+-- Word that is recognized by the spellchecker as one that is used in another region.
+-- This will be combined with the highlighting used otherwise.
 Group.new('SpellLocal', c.very_soft_yellow, c.none, no)
--- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
+-- Word that is recognized by the spellchecker as one that is hardly ever used.
+-- spell This will be combined with the highlighting used otherwise.
 Group.new('SpellRare', c.very_soft_yellow, c.none, no)
 -- status line of current window
 Group.new('StatusLine', c.none, c.none, no)
--- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+-- status lines of not-current windows Note: if this is equal to "StatusLine"
+-- Vim will use "^^^" in the status line of the current window.
 Group.new('StatusLineNC', c.warmgrey, c.none, no)
 -- status line of current :terminal window
 Group.new('StatusLineTerm', c.none, c.none, no)
@@ -110,7 +115,8 @@ Group.new('TabLineSel', c.white, c.none, no)
 Group.new('Terminal', c.white, c.black, no)
 -- titles for output from ":set all", ":autocmd" etc.
 Group.new('Title', c.yellow, c.none, no)
--- Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
+-- Visual mode selection when vim is "Not Owning the Selection".
+-- Only X11 Gui's gui-x11 and xterm-clipboard supports this.
 Group.new('VisualNOS', c.none, c.none, no)
 -- Visual mode selection
 Group.new('Visual', c.none, c.lightgrey, no)
