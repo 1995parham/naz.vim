@@ -119,3 +119,74 @@ Group.new('Visual', c.none, c.lightgrey, no)
 Group.new('WarningMsg', c.red, c.none, no)
 -- current match in 'wildmenu' completion
 Group.new('WildMenu', c.none, c.none, no)
+
+-- any comment
+Group.new('Comment',        c.grey,  c.none, i)
+-- any constant
+Group.new('Constant',       c.purple, c.none, no)
+-- string constant: "this is a string"
+Group.new('String',         c.chartreuse, c.none, no)
+-- a character constant: 'c', '\n'
+Group.new('Character',      c.yellow, c.none, no)
+-- a number constant: 234, 0xff
+Group.new('Number',         c.tomato, c.none, no)
+-- a boolean constant: TRUE, false
+Group.new('Boolean',        c.purple, c.none, no)
+-- a floating point constant: 2.3e10
+Group.new('Float',          c.tomato, c.none, no)
+-- any variable name
+Group.new('Identifier',     c.orange, c.none, no)
+-- function name (also: methods for classes)
+Group.new('Function',       c.blue, c.none, no)
+-- any statement
+Group.new('Statement',      c.pink, c.none, no)
+-- if, then, else, endif, switch, etc.
+Group.new('Conditional',    c.lightorange, c.none, no)
+-- for, do, while, etc.
+Group.new('Repeat',         c.lightorange, c.none, no)
+-- case, default, etc.
+Group.new('Label',          c.pink, c.none, no)
+-- sizeof", "+", "*", etc.
+Group.new('Operator',       c.aqua, c.none, no)
+-- any other keyword
+Group.new('Keyword',        c.aqua, c.none, no)
+-- try, catch, throw
+Group.new('Exception',      c.none, c.none, no)
+-- generic Preprocessor
+Group.new('PreProc',        c.coral, c.none, no)
+-- preprocessor #include
+Group.new('Include',        c.pink, c.none, no)
+-- preprocessor #define
+Group.new('Define',         c.pink, c.none, no)
+-- same as Define
+Group.new('Macro',          c.green, c.none, no)
+-- preprocessor #if, #else, #endif, etc.
+Group.new('PreCondit',      c.green, c.none, no)
+-- int, long, char, etc.
+Group.new('Type',           c.aqua, c.none, no)
+-- static, register, volatile, etc.
+Group.new('StorageClass',   c.darkturquoise, c.none, no)
+-- struct, union, enum, etc.
+Group.new('Structure',      c.aqua, c.none, no)
+-- A typedef
+Group.new('Typedef',        c.aqua, c.none, no)
+-- any special symbol
+Group.new('Special',        c.purple, c.none, no)
+-- special character in a constant
+Group.new('SpecialChar',    c.pink, c.none, no)
+-- you can use CTRL-] on this
+Group.new('Tag',            c.pink, c.none, no)
+-- character that needs attention
+Group.new('Delimiter',      c.pink, c.none, no)
+-- special things inside a comment
+Group.new('SpecialComment', c.aqua, c.none, no)
+-- debugging statements
+Group.new('Debug',          c.none, c.none, no)
+-- text that stands out, HTML links
+Group.new('Underlined',     c.aqua, c.none, ul)
+-- left blank, hidden
+Group.new('Ignore',         c.none, c.none, no)
+-- any erroneous construct
+Group.new('Error',          c.pink,   c.darkred, no)
+-- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+Group.new('Todo',           c.orange, c.none, b+i)
