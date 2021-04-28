@@ -2,7 +2,6 @@
 -- Description:  
 -- Author:       parham.alvani@gmail.com
 -- Website:      https://github.com/1995parham/naz.vim
-
 -- setup colorbuddy
 local Group = require('colorbuddy.group').Group
 local c = require('colorbuddy.color').colors
@@ -209,6 +208,12 @@ Group.new('goReceiverType', c.limegreen, c.none, no)
 Group.new('goTypeConstructor', c.limegreen, c.none, no)
 
 Group.new('jsonKeyword', c.orange, c.none, no)
+
+Group.new('htmlTag', c.white, c.none, no)
+Group.new('htmlEndTag', c.white, c.none, no)
+Group.new('htmlTagName', c.pink, c.none, no)
+Group.new('htmlArg', c.orange, c.none, no)
+Group.new('htmlSpecialChar', c.purple, c.none, no)
 
 Group.new('TSFloat', g.Float, c.none, no)
 Group.new('TSFunction', g.Function, c.none, no)
