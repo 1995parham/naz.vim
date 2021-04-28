@@ -1,0 +1,21 @@
+---
+name: Shell Script Lint
+on:
+  push:
+    paths:
+      - .github/workflows/lint.yaml
+      - '**.lua'
+jobs:
+  sh-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: luacheck
+        uses: nebularg/actions-luacheck@v1
+        with:
+          files: lua
+
+          config: |
+            globals = {
+                "vim"
+            }
