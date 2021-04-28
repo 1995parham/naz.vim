@@ -1,5 +1,5 @@
 ---
-name: Shell Script Lint
+name: lint
 on:
   push:
     paths:

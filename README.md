@@ -1,21 +1,26 @@
 # Naz Neovim Theme
-[![Drone (cloud)](https://img.shields.io/drone/build/1995parham/naz.vim.svg?style=flat-square)](https://cloud.drone.io/1995parham/naz.vim)
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/1995parham/naz.vim/lint?label=lint&logo=github&style=flat-square)
 
 ## Introduction
-Naz theme is based on the Tomorrow theme, and I named it because it is so cute.
 
-## Recomendations
-- [vim-airline-theme](https://github.com/vim-airline/vim-airline): tomorrow
+naz theme is based on the tomorrow theme but more cute.
+It uses lua and [colorbuddy](https://github.com/tjdevries/colorbuddy.nvim) so it works with noevim 0.5.0.
 
 ## Screenshots
+
 ### HTML
+
 ![html sample](screenshots/html.png)
 
 ### NodeJS
+
 ![nodejs sample](screenshots/nodejs.png)
 
 ### Python
+
 ![python sample](screenshots/python.png)
 
 ### Go
+
 ![python sample](screenshots/go.png)
