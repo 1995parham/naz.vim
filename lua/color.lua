@@ -35,6 +35,8 @@ Color.new('vividorange'     , '#FF6117')
 Color.new('limegreen'       , '#9FFFC2')
 Color.new('camel'           , '#C19A6B')
 Color.new('crimson'         , '#DC143C')
+Color.new('very_soft_yellow', '#f0e2b5')
+Color.new('very_soft_red'   , '#F0B5C3')
 
 Color.new('addfg'    , '#D7FFAF')
 Color.new('addbg'    , '#5F875F')
