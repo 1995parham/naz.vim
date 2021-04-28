@@ -6,7 +6,7 @@ on:
       - .github/workflows/lint.yaml
       - '**.lua'
 jobs:
-  sh-checker:
+  luacheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
