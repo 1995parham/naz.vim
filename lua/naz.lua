@@ -69,6 +69,8 @@ Group.new('MoreMsg', c.yellow, c.none, no)
 Group.new('NonText', c.lightgrey, c.none, no)
 -- normal text
 Group.new('Normal', c.white, c.black, no)
+-- normal floating window
+Group.new("NormalFloat", c.white, c.lightgrey)
 -- Popup menu: normal item.
 Group.new('Pmenu', c.orange, c.black, no)
 -- Popup menu: selected item.
@@ -108,7 +110,7 @@ Group.new('StatusLineTermNC', c.none, c.none, no)
 -- tab pages line, not active tab page label
 Group.new('TabLine', c.none, c.none, no)
 -- tab pages line, where there are no labels
-Group.new('TabLineFill', c.none, c.none, no)
+Group.new('TabLineFill', c.none, c.lightblack, no)
 -- tab pages line, active tab page label
 Group.new('TabLineSel', c.white, c.none, no)
 -- terminal window (see terminal-size-color)
