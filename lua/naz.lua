@@ -324,15 +324,15 @@ Group.new('TSMath', c.white, c.none, i)
 -- for footnotes, text references, citations.
 Group.new('TSTextReference', c.orange, c.none, i)
 -- for text environments of markup languages.
-'TSEnviroment'
+Group.new('TSEnviroment', c.white, c.none, no)
 -- for the name/the string indicating the type of text environment.
-'TSEnviromentName'
+Group.new('TSEnviromentName', c.tomato, c.none, no)
 -- text representation of an informational note.
-'TSNote'
+Group.new('TSNote', c.white, c.none, no)
 -- text representation of a warning note.
-'TSWarning'
+Group.new('TSWarning', g.WarningMsg, c.none, no)
 -- text representation of a danger note.
-'TSDanger`'
+Group.new('TSDanger', g.Error, c.none, b)
 -- for types.
 Group.new('TSType', g.Type, g.Type, g.Type)
 -- For builtin types.
