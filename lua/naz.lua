@@ -12,6 +12,7 @@ local b = s.bold
 local i = s.italic
 local uc = s.undercurl
 local ul = s.underline
+local st = s.strikethrough
 local r = s.reverse
 local no = s.NONE
 -- local global = vim.g
@@ -211,9 +212,9 @@ Group.new('goDeclaration', c.purple, c.none, no)
 Group.new('goVarAssign', c.purple, c.none, no)
 Group.new('goVar', c.purple, c.none, no)
 Group.new('goConst', g.Constant, c.none, no)
-Group.new('goTypeName', c.limegreen, c.none, no)
-Group.new('goReceiverType', c.limegreen, c.none, no)
-Group.new('goTypeConstructor', c.limegreen, c.none, no)
+Group.new('goTypeName', c.lime_green, c.none, no)
+Group.new('goReceiverType', c.lime_green, c.none, no)
+Group.new('goTypeConstructor', c.lime_green, c.none, no)
 
 Group.new('jsonKeyword', c.orange, c.none, no)
 
@@ -312,7 +313,7 @@ Group.new('TSEmphasis', c.white, c.none, i)
 -- for text to be represented with an underline
 Group.new('TSUnderline', c.white, c.none, ul)
 -- for strikethrough text
-Group.new('TSStrike', c.white, c.none, uc)
+Group.new('TSStrike', c.white, c.none, st)
 -- text that is part of a title.
 Group.new('TSTitle', c.white, c.none, b)
 -- Literal text
