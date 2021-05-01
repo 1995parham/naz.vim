@@ -207,7 +207,7 @@ Group.new('goFunctionCall', g.Function, c.none, no)
 Group.new('goBuiltins', c.camel, c.none, no)
 Group.new('goPredefinedIdentifiers', c.crimson, c.none, no)
 Group.new('goMethod', g.Function, c.none, no)
-Group.new('goVarDefs', c.vividyellow, c.none, no)
+Group.new('goVarDefs', c.vivid_yellow, c.none, no)
 Group.new('goDeclaration', c.purple, c.none, no)
 Group.new('goVarAssign', c.purple, c.none, no)
 Group.new('goVar', c.purple, c.none, no)
@@ -257,7 +257,7 @@ Group.new('TSFunction', g.Function, g.Function, g.Function)
 -- for builtin functions: table.insert in lua
 Group.new('TSFuncBuiltin', c.camel, c.none, b)
 -- for macro defined functions (calls and definitions): each macro_rules in rust
-Group.new('TSFuncMacro', g.Macro,g.Macro, i)
+Group.new('TSFuncMacro', g.Macro, g.Macro, i)
 -- for includes: #include in C, use or extern crate in rust or require in lua
 Group.new('TSInclude', g.Include, g.Include, g.Include)
 -- for keywords that don't fall in previous categories
@@ -267,7 +267,7 @@ Group.new('TSKeywordFunction', c.light_blue, c.none, no)
 -- for operators that are english words, e.g. and, as, or.
 Group.new('TSKeywordOperator', c.coral, c.none, no)
 -- for labels: label: in c and :label: in lua
-Group.new('TSLabel', g.Label, c.none, no)
+Group.new('TSLabel', g.Label, g.Label, g.Label)
 -- for method calls and definitions
 Group.new("TSMethod", g.Function, g.Function, g.Function)
 -- for identifiers referring to modules and namespaces
@@ -275,7 +275,7 @@ Group.new('TSNamespace', c.light_yellow, c.none, no)
 -- for no highlighting
 Group.new('TSNone', c.none, c.none, no)
 -- for all numbers
-Group.new('TSNumber', g.Number, c.none, no)
+Group.new('TSNumber', g.Number, g.Number, g.Number)
 -- for any operator: +, but also -> and * in c
 Group.new('TSOperator', g.Operator, g.Operator, g.Operator)
 -- for parameters of a function
@@ -293,7 +293,7 @@ Group.new('TSPunctSpecial', c.white, c.none,  no)
 -- for keywords realted to loops
 Group.new('TSRepeat', g.Repeat, g.Repeat, g.Repeat)
 -- for strings
-Group.new('TSString', g.String, c.none, no)
+Group.new('TSString', g.String, g.String, g.String)
 -- for regexes
 Group.new('TSStringRegex', c.very_light_orange, c.none, no)
 -- for escape characters within a string
@@ -314,31 +314,31 @@ Group.new('TSEmphasis', c.white, c.none, i)
 Group.new('TSUnderline', c.white, c.none, ul)
 -- for strikethrough text
 Group.new('TSStrike', c.white, c.none, st)
--- text that is part of a title.
+-- text that is part of a title
 Group.new('TSTitle', c.white, c.none, b)
--- Literal text
+-- literal text
 Group.new('TSLiteral', c.white, c.none, no)
--- any URI like a link or email.
+-- any URI like a link or email
 Group.new('TSURI', c.orange, c.none, uc)
--- for LaTex-like math environments.
+-- for LaTex-like math environments
 Group.new('TSMath', c.white, c.none, i)
--- for footnotes, text references, citations.
+-- for footnotes, text references, citations
 Group.new('TSTextReference', c.orange, c.none, i)
--- for text environments of markup languages.
+-- for text environments of markup languages
 Group.new('TSEnviroment', c.white, c.none, no)
--- for the name/the string indicating the type of text environment.
+-- for the name/the string indicating the type of text environment
 Group.new('TSEnviromentName', c.tomato, c.none, no)
--- text representation of an informational note.
+-- text representation of an informational note
 Group.new('TSNote', c.white, c.none, no)
--- text representation of a warning note.
-Group.new('TSWarning', g.WarningMsg, c.none, no)
--- text representation of a danger note.
-Group.new('TSDanger', g.Error, c.none, b)
--- for types.
-Group.new('TSType', g.Type, g.Type, g.Type)
--- For builtin types.
-Group.new('TSTypeBuiltin', g.Type, c.none, no)
--- any variable name that does not have another highlight.
+-- text representation of a warning note
+Group.new('TSWarning', g.WarningMsg, g.WarningMsg, g.WarningMsg)
+-- text representation of a danger note
+Group.new('TSDanger', g.Error, g.Error, b)
+-- for types
+Group.new('TSType', g.Type, g.Type, i)
+-- For builtin types
+Group.new('TSTypeBuiltin', g.Type, g.Type, g.Type)
+-- any variable name that does not have another highlight
 Group.new('TSVariable', c.vivid_orange, c.none, no)
--- variable names that are defined by the languages, like `this` or `self`.
+-- variable names that are defined by the languages, like `this` or `self`
 Group.new('TSVariableBuiltin', c.camel, c.none, b)
