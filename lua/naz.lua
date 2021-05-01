@@ -28,9 +28,9 @@ Group.new('Cursor', c.none, c.none, no)
 -- like Cursor, but used when in IME mode
 Group.new('CursorIM', c.none, c.none, no)
 -- the screen column that the cursor is in when 'cursorcolumn' is set
-Group.new('CursorColumn', c.none, c.lightblack2, no)
+Group.new('CursorColumn', c.black, c.very_pale_yellow, no)
 -- the screen line that the cursor is in when 'cursorline' is set
-Group.new('CursorLine', c.none, c.lightblack2, no)
+Group.new('CursorLine', c.black, c.very_pale_yellow, no)
 -- directory names (and other special names in listings)
 Group.new('Directory', c.orange, c.none, no)
 -- diff mode: Added line
@@ -226,8 +226,8 @@ Group.new('htmlSpecialChar', c.purple, c.none, no)
 
 -- for c++/dart attributes, annotations that can be attached to the code to
 -- denote some kind of meta information.
-Group.new('TSAnnotation', c.none, c.none, c.none)
-Group.new('TSAttribute', c.none, c.none, c.none)
+Group.new('TSAnnotation', c.none, c.none, no)
+Group.new('TSAttribute', c.none, c.none, no)
 -- for booleans
 Group.new('TSBoolean', g.Boolean, g.Boolean, g.Boolean)
 -- for characters
