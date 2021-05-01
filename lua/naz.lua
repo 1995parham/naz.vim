@@ -10,7 +10,7 @@ local s = require('colorbuddy.style').styles
 
 local b = s.bold
 local i = s.italic
--- local uc = s.undercurl
+local uc = s.undercurl
 local ul = s.underline
 local r = s.reverse
 local no = s.NONE
@@ -170,7 +170,7 @@ Group.new('Macro', c.green, c.none, no)
 -- preprocessor #if, #else, #endif, etc.
 Group.new('PreCondit', c.green, c.none, no)
 -- int, long, char, etc.
-Group.new('Type', c.aqua, c.none, no)
+Group.new('Type', c.lime_green, c.none, i)
 -- static, register, volatile, etc.
 Group.new('StorageClass', c.darkturquoise, c.none, no)
 -- struct, union, enum, etc.
@@ -223,35 +223,121 @@ Group.new('htmlTagName', g.Tag, c.none, no)
 Group.new('htmlArg', c.orange, c.none, no)
 Group.new('htmlSpecialChar', c.purple, c.none, no)
 
-Group.new('TSFloat', g.Float, c.none, no)
-Group.new('TSFunction', g.Function, c.none, no)
-Group.new('TSType', g.Type, c.none, no)
-Group.new('TSTypeBuiltin', g.Type, c.none, no)
-Group.new('TSLabel', g.Label, c.none, no)
-Group.new('TSCharacter', g.Character, c.none, no)
-Group.new('TSConditional', g.Conditional, c.none, no)
-Group.new('TSConstant', g.Constant, c.none, no)
-Group.new('TSConstBuiltin', g.Constant, c.none, no)
-Group.new('TSConstMacro', g.Macro, c.none, no)
-Group.new('TSFuncBuiltin', c.camel, c.none, no)
-Group.new("TSMethod", g.Function, c.none, no)
-Group.new('TSStructure', g.Structure, c.none, no)
-Group.new('TSTagDelimiter', g.Delimiter, c.none, no)
-Group.new('TSNumber', g.Number, c.none, no)
-Group.new('TSFuncMacro', g.Function, c.none, no)
-Group.new('TSInclude', g.Include, c.none, no)
-Group.new('TSKeyword', g.Keyword, c.none, no)
-Group.new('TSException', g.Exception, c.none, no)
-Group.new('TSBoolean', g.Boolean, c.none, no)
-Group.new('TSError', g.Error, c.none, no)
-Group.new('TSString', g.String, c.none, no)
-Group.new('TSStringEscape', c.orange, c.none, no)
-Group.new('TSStringRegex', c.very_light_orange, c.none, no)
-Group.new('TSProperty', c.cyan, c.none, no)
-Group.new('TSField', c.orange, c.none, no)
-Group.new('TSParameter', c.cyan, c.none, no)
-Group.new('TSVariable', c.vivid_orange, c.none, no)
-Group.new('TSPunctBracket', c.white, c.none, no)
-Group.new('TSOperator', c.white, c.none, no)
-Group.new('TSVariableBuiltin', c.camel, c.none, no)
+-- for c++/dart attributes, annotations that can be attached to the code to
+-- denote some kind of meta information.
+Group.new('TSAnnotation', c.none, c.none, c.none)
+Group.new('TSAttribute', c.none, c.none, c.none)
+-- for booleans
+Group.new('TSBoolean', g.Boolean, g.Boolean, g.Boolean)
+-- for characters
+Group.new('TSCharacter', g.Character, g.Character, g.Character)
+-- for comment block
+Group.new('TSComment', g.Comment, g.Comment, g.Comment)
+-- for keywords releated to condtionnals
+Group.new('TSConditional', g.Conditional, g.Conditional, g.Conditional)
+-- for constants
+Group.new('TSConstant', g.Constant, g.Constant, g.Constant)
+-- for constants that are built in the language: nil in lua
+Group.new('TSConstBuiltin', g.Constant, g.Constant, b)
+-- for constants that are defined by macros: NULL in c
+Group.new('TSConstMacro', g.Macro, g.Macro, b)
+-- for constructor call and definitions: {} in lua, and java constructors
 Group.new('TSConstructor', c.yellow, c.none, no)
+-- for syntax/parser errors
+Group.new('TSError', g.Error, g.Error, g.Error)
+-- for exception related keywords
+Group.new('TSException', g.Exception, g.Exception, g.Exception)
+--  for fields
+Group.new('TSField', c.orange, c.none, no)
+-- for floats
+Group.new('TSFloat', g.Float, g.Float, g.Float)
+-- for functions (calls and definitions)
+Group.new('TSFunction', g.Function, g.Function, g.Function)
+-- for builtin functions: table.insert in lua
+Group.new('TSFuncBuiltin', c.camel, c.none, b)
+-- for macro defined functions (calls and definitions): each macro_rules in rust
+Group.new('TSFuncMacro', g.Macro,g.Macro, i)
+-- for includes: #include in C, use or extern crate in rust or require in lua
+Group.new('TSInclude', g.Include, g.Include, g.Include)
+-- for keywords that don't fall in previous categories
+Group.new('TSKeyword', g.Keyword, g.Keyword, g.Keyword)
+-- for keywords used to define a function
+Group.new('TSKeywordFunction', c.light_blue, c.none, no)
+-- for operators that are english words, e.g. and, as, or.
+Group.new('TSKeywordOperator', c.coral, c.none, no)
+-- for labels: label: in c and :label: in lua
+Group.new('TSLabel', g.Label, c.none, no)
+-- for method calls and definitions
+Group.new("TSMethod", g.Function, g.Function, g.Function)
+-- for identifiers referring to modules and namespaces
+Group.new('TSNamespace', c.light_yellow, c.none, no)
+-- for no highlighting
+Group.new('TSNone', c.none, c.none, no)
+-- for all numbers
+Group.new('TSNumber', g.Number, c.none, no)
+-- for any operator: +, but also -> and * in c
+Group.new('TSOperator', g.Operator, g.Operator, g.Operator)
+-- for parameters of a function
+Group.new('TSParameter', c.pure_pink, c.none, no)
+-- for references to parameters of a function
+Group.new('TSParameterReference', c.pure_pink, c.none, no)
+-- same as TSField
+Group.new('TSProperty', c.orange, c.none, no)
+-- for delimiters ie: .
+Group.new('TSPunctDelimiter', c.white, c.none, no)
+-- for brackets and parens
+Group.new('TSPunctBracket', c.white, c.none,  no)
+-- for special punctutation that does not fall in the categories before
+Group.new('TSPunctSpecial', c.white, c.none,  no)
+-- for keywords realted to loops
+Group.new('TSRepeat', g.Repeat, g.Repeat, g.Repeat)
+-- for strings
+Group.new('TSString', g.String, c.none, no)
+-- for regexes
+Group.new('TSStringRegex', c.very_light_orange, c.none, no)
+-- for escape characters within a string
+Group.new('TSStringEscape', c.orange, c.none, no)
+-- for identifiers referring to symbols or atoms
+Group.new('TSSymbol', c.none, c.none, no)
+-- tags like html tags
+Group.new('TSTag', g.Tag, g.Tag, g.Tag)
+-- tags delimiter like < > /
+Group.new('TSTagDelimiter', g.Delimiter, g.Delimiter, g.Delimiter)
+-- for strings considered text in a markup language
+Group.new('TSText', c.white, c.none, no)
+-- for text to be represented in bold.
+Group.new('TSStrong', c.white, c.none, b)
+-- for text to be represented with emphasis
+Group.new('TSEmphasis', c.white, c.none, i)
+-- for text to be represented with an underline
+Group.new('TSUnderline', c.white, c.none, ul)
+-- for strikethrough text
+Group.new('TSStrike', c.white, c.none, uc)
+-- text that is part of a title.
+Group.new('TSTitle', c.white, c.none, b)
+-- Literal text
+Group.new('TSLiteral', c.white, c.none, no)
+-- any URI like a link or email.
+Group.new('TSURI', c.orange, c.none, uc)
+-- for LaTex-like math environments.
+Group.new('TSMath', c.white, c.none, i)
+-- for footnotes, text references, citations.
+Group.new('TSTextReference', c.orange, c.none, i)
+-- for text environments of markup languages.
+'TSEnviroment'
+-- for the name/the string indicating the type of text environment.
+'TSEnviromentName'
+-- text representation of an informational note.
+'TSNote'
+-- text representation of a warning note.
+'TSWarning'
+-- text representation of a danger note.
+'TSDanger`'
+-- for types.
+Group.new('TSType', g.Type, g.Type, g.Type)
+-- For builtin types.
+Group.new('TSTypeBuiltin', g.Type, c.none, no)
+-- any variable name that does not have another highlight.
+Group.new('TSVariable', c.vivid_orange, c.none, no)
+-- variable names that are defined by the languages, like `this` or `self`.
+Group.new('TSVariableBuiltin', c.camel, c.none, b)
