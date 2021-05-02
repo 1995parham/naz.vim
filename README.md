@@ -6,6 +6,10 @@
 
 naz theme is based on the tomorrow theme but more cute.
 It uses lua and [colorbuddy](https://github.com/tjdevries/colorbuddy.nvim) so it works with noevim 0.5.0.
+naz theme has binding for following plugins:
+
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
 
 ## Screenshots
 
