@@ -199,6 +199,8 @@ Group.new('Error', c.pink, c.darkred, no)
 -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 Group.new('Todo', c.orange, c.none, b + i)
 
+Group.new('dashboardHeader', c.orange, c.none, no)
+
 Group.new('goDirective', c.purple, c.none, no)
 Group.new('goConstants', c.orange, c.none, no)
 Group.new('goTodo', c.yellow, c.none, no)
