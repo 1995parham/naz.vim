@@ -199,7 +199,12 @@ Group.new('Error', c.pink, c.darkred, no)
 -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 Group.new('Todo', c.orange, c.none, b + i)
 
-Group.new('dashboardHeader', c.orange, c.none, no)
+-- https://github.com/glepnir/dashboard-nvim
+Group.new('DashboardHeader', c.orange, c.none, no)
+Group.new('DashboardCenter', c.springgreen, c.none, no)
+Group.new('DashboardCenterIcon', c.cyan, c.none, no)
+Group.new('DashboardShortCut', c.pink, c.none, no)
+Group.new('DashboardFooter', c.white, c.none, no)
 
 Group.new('goDirective', c.purple, c.none, no)
 Group.new('goConstants', c.orange, c.none, no)
