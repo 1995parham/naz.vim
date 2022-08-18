@@ -1,6 +1,7 @@
 local Color = require("colorbuddy.color").Color
 
 Color.new("white", "#E8E8E3")
+Color.new("white_darker", "#b8b8b8")
 Color.new("black", "#323232")
 Color.new("lightblack", "#2D2E27")
 Color.new("very_pale_yellow", "#ffffcc")
@@ -39,6 +40,8 @@ Color.new("crimson", "#DC143C")
 Color.new("very_soft_yellow", "#f0e2b5")
 Color.new("very_soft_red", "#F0B5C3")
 Color.new("pure_pink", "#ff0080")
+Color.new("pale_orange", "#ffd9b2")
+Color.new("tea_green", "#d0f0c0")
 
 Color.new("addfg", "#D7FFAF")
 Color.new("addbg", "#5F875F")
