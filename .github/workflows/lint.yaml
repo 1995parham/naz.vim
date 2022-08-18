@@ -1,16 +1,23 @@
----
-name: lint
+name: ci
+
 on:
   push:
-    paths:
-      - .github/workflows/lint.yaml
-      - '**.lua'
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  luacheck:
+  lint:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - name: luacheck
-        uses: nebularg/actions-luacheck@v1
+      - uses: actions/checkout@v3
+
+      - name: Stylua
+        uses: JohnnyMorganz/stylua-action@1.0.0
         with:
-          files: lua
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --check .
