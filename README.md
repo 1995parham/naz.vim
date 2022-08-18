@@ -1,6 +1,6 @@
 # Naz Neovim Theme
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/1995parham/naz.vim/lint?label=lint&logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/1995parham/naz.vim/ci?label=ci&logo=github&style=flat-square)
 
 ## Introduction
 
