@@ -12,29 +12,38 @@ local is_group_object = function(g)
 	return g.__type__ == "group"
 end
 
-local _group_hash = {}
+local Groups = {}
 
-local groups = setmetatable({}, {
-	__index = function(_, raw_key)
-		local key = string.lower(raw_key)
+function Groups:new()
+	return setmetatable({
+		hash = {},
+	}, self)
+end
 
-		if _group_hash[key] ~= nil then
-			return _group_hash[key]
-		end
+function Groups:__index(key)
+	local name = string.lower(key)
 
-		return {}
-	end,
+	if self.hash[name] ~= nil then
+		return self.hash[name]
+	end
 
-	__newindex = function(_, raw_key, value)
-		local key = string.lower(raw_key)
-		_group_hash[key] = value
-	end,
-})
+	return Groups[key]
+end
+
+function Groups:is_existing(key)
+	return self.hash[string.lower(key)] ~= nil
+end
+
+function Groups:__newindex(key, value)
+	local name = string.lower(key)
+	self.hash[name] = value
+end
+
+local groups = Groups:new()
 
 local Group = {}
 
-Group.__index = Group
-Group.__tostring = function(self)
+function Group:__tostring()
 	if self == nil then
 		return ""
 	end
@@ -55,11 +64,7 @@ Group._defaults = {
 	guisp = colors.none,
 }
 
-Group.is_existing_group = function(key)
-	return _group_hash[string.lower(key)] ~= nil
-end
-
-Group.__private_create = function(name, fg, bg, style, guisp, blend, default)
+function Group:__new(name, fg, bg, style, guisp, blend, default)
 	vim.validate({
 		name = { name, "string" },
 		fg = {
@@ -113,19 +118,19 @@ Group.__private_create = function(name, fg, bg, style, guisp, blend, default)
 	})
 
 	if not fg then
-		fg = Group._defaults["fg"]
+		fg = self._defaults.fg
 	end
 
 	if not bg then
-		bg = Group._defaults["bg"]
+		bg = self._defaults.bg
 	end
 
 	if not guisp then
-		guisp = Group._defaults["guisp"]
+		guisp = self._defaults.guisp
 	end
 
 	if not style then
-		style = Group._defaults["style"]
+		style = self._defaults.style
 	end
 
 	local obj = setmetatable({
@@ -141,7 +146,8 @@ Group.__private_create = function(name, fg, bg, style, guisp, blend, default)
 		style = style,
 		guisp = guisp,
 		blend = blend,
-	}, Group)
+	}, self)
+	self.__index = self
 
 	groups[name] = obj
 
@@ -151,15 +157,15 @@ Group.__private_create = function(name, fg, bg, style, guisp, blend, default)
 	return obj
 end
 
-Group.default = function(name, fg, bg, style, guisp, blend)
-	return Group.__private_create(name, fg, bg, style, guisp, blend, true)
+function Group.default(name, fg, bg, style, guisp, blend)
+	return Group:__new(name, fg, bg, style, guisp, blend, true)
 end
 
-Group.new = function(name, fg, bg, style, guisp, blend)
-	return Group.__private_create(name, fg, bg, style, guisp, blend, false)
+function Group.new(name, fg, bg, style, guisp, blend)
+	return Group:__new(name, fg, bg, style, guisp, blend, false)
 end
 
-Group.override = function(name, group, opts)
+function Group.override(name, group, opts)
 	vim.validate({
 		name = { name, "string" },
 		group = {
@@ -177,7 +183,7 @@ Group.override = function(name, group, opts)
 		},
 	})
 
-	return Group.__private_create(
+	return Group:__new(
 		name or group.name,
 		opts.fg or group.fg,
 		opts.bg or group.bg,
@@ -188,7 +194,7 @@ Group.override = function(name, group, opts)
 	)
 end
 
-Group.link = function(name, linked_group)
+function Group.link(name, linked_group)
 	vim.validate({
 		name = { name, "string" },
 		linked_group = {
@@ -208,26 +214,6 @@ Group.link = function(name, linked_group)
 end
 
 function Group:apply()
-	--[[
-
-  guifg={color-name}                  *highlight-guifg*
-  guibg={color-name}                  *highlight-guibg*
-  guisp={color-name}                  *highlight-guisp*
-      These give the foreground (guifg), background (guibg) and special
-      (guisp) color to use in the GUI.  "guisp" is used for undercurl
-      and underline.
-      There are a few special names:
-          NONE        no color (transparent)
-          bg      use normal background color
-          background  use normal background color
-          fg      use normal foreground color
-          foreground  use normal foreground color
-      To use a color name with an embedded space or other special character,
-      put it in single quotes.  The single quote cannot be used then.
-      Example: >
-          :hi comment guifg='salmon pink'
-  --]]
-
 	if not self.blend then
 		self.blend = 0
 	end
@@ -246,13 +232,8 @@ function Group:apply()
 	)
 end
 
-local _clear_groups = function()
-	_group_hash = {}
-end
-
 return {
 	groups = groups,
 	Group = Group,
 	is_group_object = is_group_object,
-	_clear_groups = _clear_groups,
 }
