@@ -1,98 +1,50 @@
 local util = require("colorbuddy.util")
 
-local Color
+local Color = {
+	__type__ = "color",
+}
 
-local color_hash = {}
-local function add_color(c)
-	color_hash[string.lower(c.name)] = c
+local Colors = {}
+
+function Colors:new()
+	local o = {
+		hash = {},
+	}
+	setmetatable(o, self)
+
+	return o
 end
 
-local function is_existing_color(raw_key)
-	return color_hash[string.lower(raw_key)] ~= nil
+function Colors:add(c)
+	self.hash[string.lower(c.name)] = c
 end
 
-local find_color = function(_, raw_key)
-	local key = string.lower(raw_key)
+function Colors:is_existing(name)
+	return self.hash[string.lower(name)] ~= nil
+end
 
-	if is_existing_color(key) then
-		return color_hash[key]
+function Colors:__index(name)
+	local key = string.lower(name)
+
+	if Colors.is_existing(self, key) then
+		return self.hash[key]
 	else
 		local nvim_color = vim.api.nvim_get_color_by_name(key)
 		if nvim_color > 0 then
-			return Color.new(key, "#" .. bit.tohex(nvim_color, 6))
-		end
-
-		return {}
-	end
-end
-
-local colors = {}
--- colors.__index = colors
-
-local next_color = function(tbl)
-	local stateless_iterator = function(tbl, k)
-		local v
-		k, v = next(color_hash, k)
-
-		if k == "none" then
-			k, v = next(color_hash, k)
-		end
-
-		while k and string.find(k, "__") == 1 do
-			k, v = next(color_hash, k)
-		end
-
-		if v ~= nil then
-			return k, v
+			return Color:new(key, "#" .. bit.tohex(nvim_color, 6))
 		end
 	end
 
-	return stateless_iterator, tbl, nil
+	return Colors[name]
 end
 
-local __colors_mt = {
-	__index = find_color,
-	__pairs = next_color,
-	-- __pairs = function(tbl)
-	--     assert(false)
-	-- end,
+local colors = Colors:new()
 
-	-- __ipairs = function(tbl)
-	--     assert(false)
-	-- end
-}
-colors = setmetatable(colors, __colors_mt)
-
-Color = {}
-
-local IndexColor = function(_, key)
-	if Color[key] ~= nil then
-		return Color[key]
-	end
-
-	return nil
+function Color:__tostring()
+	return string.format("[%s: (%s, %s, %s)]", self.name, self.H, self.S, self.L)
 end
 
-local __ColorMt = {
-	__type__ = "color",
-	__metatable = {},
-	__index = IndexColor,
-	__tostring = function(self)
-		return string.format("[%s: (%s, %s, %s)]", self.name, self.H, self.S, self.L)
-	end,
-}
-
-Color.__private_create = function(name, H, S, L)
-	return setmetatable({
-		__type__ = "color",
-		name = name,
-		H = H,
-		S = S,
-		L = L,
-	}, __ColorMt)
-end
-
-Color.new = function(name, clr)
+function Color:new(name, clr)
 	vim.validate({
 		name = { name, "string" },
 		clr = {
@@ -109,42 +61,40 @@ Color.new = function(name, clr)
 		},
 	})
 
-	assert(__ColorMt)
+	local H, S, L
 
-	if clr == nil then
-		local obj = {
-			__type__ = "color",
-			name = name,
-			to_rgb = Color.to_rgb,
-		}
-
-		add_color(obj)
-
-		return obj
+	if clr ~= nil then
+		H, S, L = util.rgb_string_to_hsl(clr)
 	end
 
-	local H, S, L = util.rgb_string_to_hsl(clr)
-
 	-- if you have already defined that color you will get an error
-	if is_existing_color(name) then
+	if colors:is_existing(name) then
 		error(string.format("color %s already defined", name))
 	end
 
-	local object = Color.__private_create(name, H, S, L)
-	add_color(object)
+	local object = {
+		name = name,
+		H = H,
+		S = S,
+		L = L,
+	}
+	setmetatable(object, self)
+	self.__index = self
+
+	colors:add(object)
 
 	return object
 end
 
-local special_colors = {
-	none = "none",
-	bg = "bg",
-	background = "background",
-	fg = "fg",
-	foreground = "foreground",
-}
+function Color:to_rgb(H, S, L)
+	local special_colors = {
+		none = "none",
+		bg = "bg",
+		background = "background",
+		fg = "fg",
+		foreground = "foreground",
+	}
 
-Color.to_rgb = function(self, H, S, L)
 	if special_colors[self.name] then
 		return special_colors[self.name]
 	end
@@ -187,23 +137,18 @@ local is_color_object = function(c)
 	return c.__type__ == "color"
 end
 
-local _clear_colors = function()
-	color_hash = {}
-end
-
-Color.new("none")
-Color.new("gray0", "#282c34")
-Color.new("gray1", "#282a2e")
-Color.new("gray2", "#373b41")
-Color.new("gray3", "#969896")
-Color.new("gray4", "#b4b7b4")
-Color.new("gray5", "#c5c8c6")
-Color.new("gray6", "#e0e0e0")
-Color.new("gray7", "#ffffff")
+Color:new("none")
+Color:new("gray0", "#282c34")
+Color:new("gray1", "#282a2e")
+Color:new("gray2", "#373b41")
+Color:new("gray3", "#969896")
+Color:new("gray4", "#b4b7b4")
+Color:new("gray5", "#c5c8c6")
+Color:new("gray6", "#e0e0e0")
+Color:new("gray7", "#ffffff")
 
 return {
 	colors = colors,
 	Color = Color,
 	is_color_object = is_color_object,
-	_clear_colors = _clear_colors,
 }

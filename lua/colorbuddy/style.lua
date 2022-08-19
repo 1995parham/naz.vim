@@ -1,84 +1,105 @@
-local __local_mt
+local Styles = {}
 
-local style_hash = {}
-local find_style = function(_, name)
-	if style_hash[string.lower(name)] ~= nil then
-		return style_hash[string.lower(name)]
+function Styles:new()
+	local o = {
+		hash = {},
+	}
+	setmetatable(o, self)
+
+	return o
+end
+
+function Styles:__index(name)
+	if self.hash[string.lower(name)] ~= nil then
+		return self.hash[string.lower(name)]
 	end
 
-	return {}
+	return Styles[name]
 end
 
-local styles = {}
-local __styles_mt = {
-	__metatable = {},
-	__index = find_style,
+function Styles:append(style, name)
+	self.hash[name or style.name] = style
+end
+
+local styles = Styles:new()
+
+local Style = {
+	__type__ = "style",
 }
-setmetatable(styles, __styles_mt)
 
-local style_tostring = function(self)
-	return string.format("style:<%s>", self.name)
+function Style:__tostring()
+	local name = self.name
+	if #name == 0 then
+		name = "none"
+	end
+
+	return string.format("style:<%s>", name)
 end
 
-local private_create = function(values)
-	return setmetatable({
-		__type__ = "style",
+function Style:__add(right)
+	local values = {}
+
+	for name, _ in pairs(self.values) do
+		values[name] = true
+	end
+
+	for name, _ in pairs(right.values) do
+		values[name] = true
+	end
+
+	return self:new(values)
+end
+
+function Style:__sub(right)
+	local values = {}
+
+	for name, _ in pairs(self.values) do
+		values[name] = true
+	end
+
+	for name, _ in pairs(right.values) do
+		values[name] = nil
+	end
+
+	return self:new(values)
+end
+
+function Style:new(style)
+	local values = {}
+
+	if type(style) == "string" then
+		style = string.lower(style)
+
+		if style ~= "none" then
+			values[style] = true
+		end
+	elseif type(values) == "table" and #values >= 0 then
+		for _, s in ipairs(values) do
+			-- none cannot be used in non-singular style creation
+			if string.lower(s) ~= "none" then
+				values[string.lower(s)] = true
+			end
+		end
+	else
+		error(string.format("style should be style(s) name but %s", style))
+	end
+
+	local obj = {
 		name = table.concat(vim.tbl_keys(values), ","),
 		values = values,
-	}, __local_mt)
-end
+	}
 
-local style_add = function(left, right)
-	local values = {}
-	for index, _ in pairs(left.values) do
-		values[index] = true
+	setmetatable(obj, self)
+	self.__index = self
+
+	-- stores only singular styles
+	if type(style) == "string" then
+		if style == "none" then
+			styles:append(obj, style)
+		else
+			styles:append(obj)
+		end
 	end
-
-	for index, _ in pairs(right.values) do
-		values[index] = true
-	end
-
-	return private_create(values)
-end
-
--- style.foo - style.bar
--- Should just remove style.bar from the set of style.foo
-local style_sub = function(left, right)
-	local values = {}
-
-	-- copy original set
-	for index, _ in pairs(left.values) do
-		values[index] = true
-	end
-
-	-- remove subtracted items
-	for index, _ in pairs(right.values) do
-		values[index] = nil
-	end
-
-	return private_create(values)
-end
-
-local Style = {}
-__local_mt = {
-	__metatable = {},
-	__index = Style,
-	__tostring = style_tostring,
-	__add = style_add,
-	__sub = style_sub,
-}
-
-Style.new = function(name)
-	name = string.lower(name)
-
-	local obj
-	if name ~= "none" then
-		obj = private_create({ [name] = true })
-	else
-		obj = private_create({})
-	end
-
-	style_hash[name] = obj
 
 	return obj
 end
@@ -92,28 +113,18 @@ local is_style_object = function(s)
 end
 
 -- setup the valid styles for vim and then lock down "styles"
-Style.new("bold")
-Style.new("underline")
-Style.new("undercurl")
-Style.new("strikethrough")
-Style.new("reverse")
-Style.new("inverse")
-Style.new("italic")
-Style.new("standout")
-Style.new("nocombine")
-Style.new("NONE")
-
--- Make styles (mostly) readonly
-local read_only_styles = {}
-setmetatable(read_only_styles, {
-	__index = find_style,
-	__newindex = function(_, k, _)
-		error('Attempt to modify "styles", a read-only table, with: ' .. k)
-	end,
-	__metatable = false,
-})
+Style:new("bold")
+Style:new("underline")
+Style:new("undercurl")
+Style:new("strikethrough")
+Style:new("reverse")
+Style:new("inverse")
+Style:new("italic")
+Style:new("standout")
+Style:new("nocombine")
+Style:new("NONE")
 
 return {
-	styles = read_only_styles,
+	styles = styles,
 	is_style_object = is_style_object,
 }
