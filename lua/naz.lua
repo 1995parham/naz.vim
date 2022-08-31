@@ -376,3 +376,20 @@ Group.link("TSTypeDefinition", g.Type)
 Group.new("TSVariable", c.vivid_orange, c.none, no)
 -- variable names that are defined by the languages, like `this` or `self`
 Group.new("TSVariableBuiltin", c.camel, c.none, b)
+
+-- gray
+Group.new("CmpItemAbbrDeprecated", c.grey, c.none, st)
+-- blue
+Group.new("CmpItemAbbrMatch", c.blue, c.none)
+Group.new("CmpItemAbbrMatchFuzzy", c.blue, c.none)
+-- light blue
+Group.new("CmpItemKindVariable", c.light_blue, c.none)
+Group.new("CmpItemKindInterface", c.light_blue, c.none)
+Group.new("CmpItemKindText", c.light_blue, c.none)
+-- pink
+Group.new("CmpItemKindFunction", c.pink, c.none)
+Group.new("CmpItemKindMethod", c.pink, c.none)
+-- front
+Group.new("CmpItemKindKeyword", c.vivid_orange, c.none)
+Group.new("CmpItemKindProperty", c.vivid_orange, c.none)
+Group.new("CmpItemKindUnit", c.vivid_orange, c.none)
