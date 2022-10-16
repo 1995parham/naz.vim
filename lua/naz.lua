@@ -216,166 +216,166 @@ Group.new("htmlSpecialChar", c.purple, c.none, no)
 
 -- for c++/dart attributes, annotations that can be attached to the code to
 -- denote some kind of meta information.
-Group.new("TSAnnotation", c.none, c.none, no)
+Group.new("@annotation", c.none, c.none, no)
 
-Group.new("TSAttribute", c.none, c.none, no)
+Group.new("@attribute", c.none, c.none, no)
 
 -- for booleans
-Group.link("TSBoolean", g.Boolean)
+Group.link("@boolean", g.Boolean)
 
 -- for characters
-Group.link("TSCharacter", g.Character)
-Group.link("TSCharacterSpecial", g.SpecialChar)
+Group.link("@character", g.Character)
+Group.link("@character.special", g.SpecialChar)
 
 -- for comment block
-Group.link("TSComment", g.Comment)
+Group.link("@comment", g.Comment)
 
 -- for keywords releated to condtionnals
-Group.link("TSConditional", g.Conditional)
+Group.link("@conditional", g.Conditional)
 
 -- for constants
-Group.link("TSConstant", g.Constant)
+Group.link("@constant", g.Constant)
 -- for constants that are built in the language: nil in lua
-Group.override("TSConstBuiltin", g.Constant, { style = b + i })
+Group.override("@constant.builtin", g.Constant, { style = b + i })
 -- for constants that are defined by macros: NULL in c
-Group.override("TSConstMacro", g.Macro, { style = b })
+Group.override("@constant.macro", g.Macro, { style = b })
 
--- for constructor call and definitions: {} in lua, and java constructors
-Group.new("TSConstructor", c.yellow, c.none, no)
+-- for construcztor call and definitions: {} in lua, and java constructors
+Group.new("@constructor", c.yellow, c.none, no)
 
-Group.link("TSDebug", g.Debug)
-Group.link("TSDefine", g.Define)
+Group.link("@debug", g.Debug)
+Group.link("@define", g.Define)
 
 -- for syntax/parser errors
-Group.link("TSError", g.Error)
+Group.link("@error", g.Error)
 -- for exception related keywords
-Group.link("TSException", g.Exception)
+Group.link("@exception", g.Exception)
 
 --  for fields
-Group.new("TSField", c.orange, c.none, no)
+Group.new("@field", c.orange, c.none, no)
 
 -- for floats
-Group.link("TSFloat", g.Float)
+Group.link("@float", g.Float)
 
 -- for functions (calls and definitions)
-Group.link("TSFunction", g.Function)
-Group.link("TSFunctionCall", g.Function)
+Group.link("@function", g.Function)
+Group.link("@function.call", g.Function)
 -- for builtin functions: table.insert in lua
-Group.new("TSFuncBuiltin", c.camel, c.none, b)
+Group.new("@function.builtin", c.camel, c.none, b)
 -- for macro defined functions (calls and definitions): each macro_rules in rust
-Group.override("TSFuncMacro", g.Macro, { style = i })
+Group.override("@function.macro", g.Macro, { style = i })
 
 -- for includes: #include in C, use or extern crate in rust or require in lua
-Group.link("TSInclude", g.Include)
+Group.link("@include", g.Include)
 
 -- for keywords that don't fall in previous categories
-Group.link("TSKeyword", g.Keyword)
+Group.link("@keyword", g.Keyword)
 -- for keywords used to define a function
-Group.new("TSKeywordFunction", c.light_blue, c.none, i)
+Group.new("@keyword.function", c.light_blue, c.none, i)
 -- for operators that are english words, e.g. and, as, or.
-Group.new("TSKeywordOperator", c.coral, c.none, no)
-Group.new("TSKeywordReturn", c.pale_orange, c.none, no)
+Group.new("@keyword.operator", c.coral, c.none, no)
+Group.new("@keyword.return", c.pale_orange, c.none, no)
 
 -- for labels: label: in c and :label: in lua
-Group.link("TSLabel", g.Label)
+Group.link("@label", g.Label)
 
 -- for method calls and definitions
-Group.override("TSMethod", g.Function, { style = i })
-Group.override("TSMethodCall", g.Function, { style = i })
+Group.override("@method", g.Function, { style = i })
+Group.override("@method.call", g.Function, { style = i })
 
 -- for identifiers referring to modules and namespaces
-Group.new("TSNamespace", c.light_yellow, c.none, no)
+Group.new("@namespace", c.light_yellow, c.none, no)
 
 -- for no highlighting
-Group.new("TSNone", c.none, c.none, no)
+Group.new("@none", c.none, c.none, no)
 -- for all numbers
-Group.link("TSNumber", g.Number)
+Group.link("@number", g.Number)
 
 -- for any operator: +, but also -> and * in c
-Group.link("TSOperator", g.Operator)
+Group.link("@operator", g.Operator)
 
 -- for parameters of a function
-Group.new("TSParameter", c.pure_pink, c.none, no)
+Group.new("@parameter", c.pure_pink, c.none, no)
 -- for references to parameters of a function
-Group.new("TSParameterReference", c.pure_pink, c.none, no)
+Group.new("@parameter.reference", c.pure_pink, c.none, no)
 
-Group.link("TSPreProc", g.PreProc)
+Group.link("@preproc", g.PreProc)
 
 -- same as TSField
-Group.new("TSProperty", c.orange, c.none, no)
+Group.new("@property", c.orange, c.none, no)
 
 -- for delimiters ie: .
-Group.new("TSPunctDelimiter", c.white, c.none, no)
+Group.new("@punctuation.delimiter", c.white, c.none, no)
 -- for brackets and parens
-Group.new("TSPunctBracket", c.white, c.none, no)
+Group.new("@punctuation.bracket", c.white, c.none, no)
 -- for special punctutation that does not fall in the categories before
-Group.new("TSPunctSpecial", c.white, c.none, no)
+Group.new("@punctuation.special", c.white, c.none, no)
 
 -- for keywords realted to loops
-Group.link("TSRepeat", g.Repeat)
+Group.link("@repeat", g.Repeat)
 
-Group.link("TSStorageClass", g.StorageClass)
+Group.link("@storageclass", g.StorageClass)
 
 -- for strings
-Group.link("TSString", g.String)
+Group.link("@string", g.String)
 -- for regexes
-Group.new("TSStringRegex", c.very_light_orange, c.none, no)
+Group.new("@string.regex", c.very_light_orange, c.none, no)
 -- for escape characters within a string
-Group.new("TSStringEscape", c.orange, c.none, no)
-Group.new("TSStringSpecial", c.orange, c.none, no)
+Group.new("@string.escape", c.orange, c.none, no)
+Group.new("@string.special", c.orange, c.none, no)
 
 -- for identifiers referring to symbols or atoms
-Group.new("TSSymbol", c.none, c.none, no)
+Group.new("@symbol", c.none, c.none, no)
 
 -- tags like html tags
-Group.link("TSTag", g.Tag)
-Group.new("TSTagAttribute", c.softred)
+Group.link("@tag", g.Tag)
+Group.new("@tag.attribute", c.softred)
 -- tags delimiter like < > /
-Group.link("TSTagDelimiter", g.Delimiter)
+Group.link("@tag.delimiter", g.Delimiter)
 
 -- for strings considered text in a markup language
-Group.new("TSText", c.white, c.none, no)
+Group.new("@text", c.white, c.none, no)
 -- for text to be represented in bold.
-Group.new("TSStrong", c.white_darker, c.none, b)
+Group.new("@text.strong", c.white_darker, c.none, b)
 -- for text to be represented with emphasis
-Group.new("TSEmphasis", c.white, c.none, i)
+Group.new("@text.emphasis", c.white, c.none, i)
 -- for text to be represented with an underline
-Group.new("TSUnderline", c.white, c.none, ul)
+Group.new("@text.underline", c.white, c.none, ul)
 -- for strikethrough text
-Group.new("TSStrike", c.white, c.none, st)
+Group.new("@text.strike", c.white, c.none, st)
 -- text that is part of a title
-Group.new("TSTitle", c.very_light_orange, c.none, b)
+Group.new("@text.title", c.very_light_orange, c.none, b)
 -- literal text
-Group.new("TSLiteral", c.vivid_orange, c.none, i)
+Group.new("@text.literal", c.vivid_orange, c.none, i)
 -- any URI like a link or email
-Group.new("TSURI", c.lime_green, c.none, uc)
+Group.new("@text.uri", c.lime_green, c.none, uc)
 -- for LaTex-like math environments
-Group.new("TSMath", c.white, c.none, i)
+Group.new("@text.math", c.white, c.none, i)
 -- for footnotes, text references, citations
-Group.new("TSTextReference", c.orange, c.none, i)
+Group.new("@text.reference", c.orange, c.none, i)
 -- for text environments of markup languages
-Group.new("TSEnviroment", c.white, c.none, no)
+Group.new("@text.enviroment", c.white, c.none, no)
 -- for the name/the string indicating the type of text environment
-Group.new("TSEnviromentName", c.tomato, c.none, no)
+Group.new("@text.enviroment.name", c.tomato, c.none, no)
 
 -- text representation of an informational note
-Group.new("TSNote", c.white, c.none, no)
+Group.new("@text.note", c.white, c.none, no)
 -- text representation of a warning note
-Group.link("TSWarning", g.WarningMsg)
+Group.link("@text.warning", g.WarningMsg)
 -- text representation of a danger note
-Group.override("TSDanger", g.Error, { style = b })
+Group.override("@text.danger", g.Error, { style = b })
 
 -- for types
-Group.override("TSType", g.Type, { style = i })
+Group.override("@type", g.Type, { style = i })
 -- For builtin types
-Group.link("TSTypeBuiltin", g.Type)
-Group.link("TSTypeQualifier", g.Type)
-Group.link("TSTypeDefinition", g.Type)
+Group.link("@type.builtin", g.Type)
+Group.link("@type.qualifier", g.Type)
+Group.link("@type.definition", g.Type)
 
 -- any variable name that does not have another highlight
-Group.new("TSVariable", c.vivid_orange, c.none, no)
+Group.new("@variable", c.vivid_orange, c.none, no)
 -- variable names that are defined by the languages, like `this` or `self`
-Group.new("TSVariableBuiltin", c.camel, c.none, b)
+Group.new("@variable.builtin", c.camel, c.none, b)
 
 Group.new("CmpItemAbbrDeprecated", c.grey, c.none, st)
 Group.new("CmpItemAbbrMatch", c.lime_green, c.none)
