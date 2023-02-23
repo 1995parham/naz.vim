@@ -214,6 +214,8 @@ Group.link("htmlTagName", g.Tag)
 Group.new("htmlArg", c.orange, c.none, no)
 Group.new("htmlSpecialChar", c.purple, c.none, no)
 
+-- https://github.com/nvim-treesitter/nvim-treesitter
+
 -- for c++/dart attributes, annotations that can be attached to the code to
 -- denote some kind of meta information.
 Group.new("@annotation", c.none, c.none, no)
@@ -389,3 +391,85 @@ Group.new("CmpItemKindMethod", c.pink, c.none)
 Group.new("CmpItemKindKeyword", c.vivid_orange, c.none)
 Group.new("CmpItemKindProperty", c.vivid_orange, c.none)
 Group.new("CmpItemKindUnit", c.vivid_orange, c.none)
+
+-- https://github.com/nvim-telescope/telescope.nvim
+
+-- Sets the highlight for selected items within the picker.
+Group.new("TelescopeSelection")
+Group.new("TelescopeSelectionCaret")
+Group.new("TelescopeMultiSelection")
+Group.new("TelescopeMultiIcon")
+
+-- "Normal" in the floating windows created by telescope.
+Group.new("TelescopeNormal")
+Group.new("TelescopePreviewNormal")
+Group.new("TelescopePromptNormal")
+Group.new("TelescopeResultsNormal")
+
+-- Border highlight groups.
+--   Use TelescopeBorder to override the default.
+--   Otherwise set them specifically
+Group.new("TelescopeBorder")
+Group.new("TelescopePromptBorder")
+Group.new("TelescopeResultsBorder")
+Group.new("TelescopePreviewBorder")
+
+-- Title highlight groups.
+--   Use TelescopeTitle to override the default.
+--   Otherwise set them specifically
+Group.new("TelescopeTitle")
+Group.new("TelescopePromptTitle")
+Group.new("TelescopeResultsTitle")
+Group.new("TelescopePreviewTitle")
+
+Group.new("TelescopePromptCounter")
+
+-- Used for highlighting characters that you match.
+Group.new("TelescopeMatching")
+
+-- Used for the prompt prefix
+Group.new("TelescopePromptPrefix")
+
+-- Used for highlighting the matched line inside Previewer. Works only for (vim_buffer_ previewer)
+Group.new("TelescopePreviewLine")
+Group.new("TelescopePreviewMatch")
+
+Group.new("TelescopePreviewPipe")
+Group.new("TelescopePreviewCharDev")
+Group.new("TelescopePreviewDirectory")
+Group.new("TelescopePreviewBlock")
+Group.new("TelescopePreviewLink")
+Group.new("TelescopePreviewSocket")
+Group.new("TelescopePreviewRead")
+Group.new("TelescopePreviewWrite")
+Group.new("TelescopePreviewExecute")
+Group.new("TelescopePreviewHyphen")
+Group.new("TelescopePreviewSticky")
+Group.new("TelescopePreviewSize")
+Group.new("TelescopePreviewUser")
+Group.new("TelescopePreviewGroup")
+Group.new("TelescopePreviewDate")
+Group.new("TelescopePreviewMessage")
+Group.new("TelescopePreviewMessageFillchar")
+
+-- Used for Picker specific Results highlighting
+Group.new("TelescopeResultsClass")
+Group.new("TelescopeResultsConstant")
+Group.new("TelescopeResultsField")
+Group.new("TelescopeResultsFunction")
+Group.new("TelescopeResultsMethod")
+Group.new("TelescopeResultsOperator")
+Group.new("TelescopeResultsStruct")
+Group.new("TelescopeResultsVariable")
+
+Group.new("TelescopeResultsLineNr")
+Group.new("TelescopeResultsIdentifier")
+Group.new("TelescopeResultsNumber")
+Group.new("TelescopeResultsComment")
+Group.new("TelescopeResultsSpecialComment")
+
+-- Used for git status Results highlighting
+Group.new("TelescopeResultsDiffChange")
+Group.new("TelescopeResultsDiffAdd")
+Group.new("TelescopeResultsDiffDelete")
+Group.new("TelescopeResultsDiffUntracked")
