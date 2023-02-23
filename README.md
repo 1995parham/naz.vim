@@ -26,9 +26,9 @@ plugin({
 
 ## Screenshots
 
-### HTML
+### Go
 
-![html sample](screenshots/html.png)
+![python sample](screenshots/go.png)
 
 ### NodeJS
 
@@ -37,7 +37,3 @@ plugin({
 ### Python
 
 ![python sample](screenshots/python.png)
-
-### Go
-
-![python sample](screenshots/go.png)
