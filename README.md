@@ -10,6 +10,7 @@ Naz theme has binding for following plugins:
 
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)
 
 ## Install
 
