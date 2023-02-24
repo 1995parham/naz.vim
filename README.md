@@ -24,6 +24,11 @@ plugin({
 })
 ```
 
+## Where we can find colors?
+
+You can use [`pastel`](https://github.com/sharkdp/pastel) to find out about colors
+and their presentation on your terminal.
+
 ## Screenshots
 
 ### Go
