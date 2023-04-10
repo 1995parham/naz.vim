@@ -36,6 +36,21 @@ plugin({
 You can use [`pastel`](https://github.com/sharkdp/pastel) to find out about colors
 and their presentation on your terminal.
 
+## Treesitter is awesome
+
+After neovim start supporting [treesitter](https://github.com/tree-sitter/) a new era is begun.
+In neovim 0.9 treesitter supports semantic highlight
+which is described [here](https://gist.github.com/swarn/fb37d9eefe1bc616c2a7e476c0bc0316)
+
+In a nutshell with `:Inspect` command you can see what semantic highlights are being applied to your code.
+In general:
+
+- `@lsp.type.<type>.<ft>` highlight for each token
+- `@lsp.mod.<mod>.<ft>` highlight for each modifier of each token
+- `@lsp.typemod.<type>.<mod>.<ft>` highlights for each modifier of each token
+
+Also, you can read more about it on `:h treesitter-highlight-groups`.
+
 ## Screenshots
 
 ### Go
