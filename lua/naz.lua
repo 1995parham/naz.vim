@@ -261,6 +261,7 @@ Group.link("@float", g.Float)
 
 -- for functions (calls and definitions)
 Group.link("@function", g.Function)
+Group.link("@lsp.type.function", g.Function)
 Group.link("@function.call", g.Function)
 -- for builtin functions: table.insert in lua
 Group.new("@function.builtin", c.camel, c.none, b)
@@ -287,6 +288,7 @@ Group.override("@method.call", g.Function, { style = i })
 
 -- for identifiers referring to modules and namespaces
 Group.new("@namespace", c.light_yellow, c.none, no)
+Group.link("@lsp.type.namespace", g:__index("@namespace"))
 
 -- for no highlighting
 Group.new("@none", c.none, c.none, no)
@@ -305,6 +307,7 @@ Group.link("@preproc", g.PreProc)
 
 -- same as TSField
 Group.new("@property", c.orange, c.none, no)
+Group.link("@lsp.type.property", g:__index("@property"))
 
 -- for delimiters ie: .
 Group.new("@punctuation.delimiter", c.white, c.none, no)
@@ -369,6 +372,8 @@ Group.override("@text.danger", g.Error, { style = b })
 
 -- for types
 Group.override("@type", g.Type, { style = i })
+Group.link("@lsp.type.type", g:__index("@type"))
+Group.new("@lsp.type.class", c.lightorange, c.none, no)
 -- For builtin types
 Group.link("@type.builtin", g.Type)
 Group.link("@type.qualifier", g.Type)
