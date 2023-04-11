@@ -1,6 +1,8 @@
-# Naz Neovim Theme
+<h1 align="center"> Naz Neovim Theme </h1>
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/1995parham/naz.vim/lint.yaml?label=ci&logo=github&style=flat-square&branch=main)
+<p align="center">
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/1995parham/naz.vim/lint.yaml?logo=github&style=for-the-badge">
+</p>
 
 ## Nomenclature
 
