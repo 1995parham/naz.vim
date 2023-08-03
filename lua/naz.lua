@@ -201,10 +201,10 @@ Group.new("Todo", c.orange, c.none, b + i)
 
 -- https://github.com/glepnir/dashboard-nvim
 Group.new("DashboardHeader", c.orange, c.none, no)
-Group.new("DashboardCenter", c.white, c.none, no)
+Group.new("DashboardCenter", c.light_yellow, c.none, no)
 Group.new("DashboardCenterIcon", c.cyan, c.none, no)
 Group.new("DashboardShortCut", c.pink, c.none, no)
-Group.new("DashboardFooter", c.white, c.none, no)
+Group.new("DashboardFooter", c.vivid_orange, c.none, no)
 
 Group.new("jsonKeyword", c.orange, c.none, no)
 
