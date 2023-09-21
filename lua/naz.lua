@@ -71,7 +71,13 @@ Group.new("NonText", c.lightgrey, c.none, no)
 -- normal text
 Group.new("Normal", c.white, c.black, no)
 -- normal floating window
-Group.new("NormalFloat", c.white, c.lightgrey)
+Group.new("NormalFloat", c.white)
+-- Title of floating windows
+Group.new("FloatTitle", c.white, c.none, b)
+-- Footer of floating windows
+Group.new("FloatFooter", c.white, c.none, b)
+-- Border of floating windows.
+Group.new("FloatBorder", c.white)
 -- Popup menu: normal item.
 Group.new("Pmenu", c.orange, c.black, no)
 -- Popup menu: selected item.
