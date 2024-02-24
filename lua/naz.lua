@@ -375,11 +375,11 @@ Group.new("@markup.quote", c.orange, c.none, i)
 Group.new("@markup.enviroment", c.white, c.none, no)
 
 -- text representation of an informational note
-Group.new("@text.note", c.white, c.none, no)
+Group.new("@comment.note", c.white, c.none, no)
 -- text representation of a warning note
-Group.link("@text.warning", g.WarningMsg)
+Group.link("@comment.warning", g.WarningMsg)
 -- text representation of a danger note
-Group.override("@text.danger", g.Error, { style = b })
+Group.override("@comment.danger", g.Error, { style = b })
 
 -- for types
 Group.override("@type", g.Type, { style = i })
