@@ -356,7 +356,11 @@ Group.new("@markup.underline", c.white, c.none, ul)
 -- for strikethrough text
 Group.new("@markup.strike", c.white, c.none, st)
 -- text that is part of a title
-Group.new("@markup.header", c.very_light_orange, c.none, b)
+Group.new("@markup.heading", c.very_light_orange, c.none, b)
+Group.new("@markup.heading.1", c.very_light_orange, c.none, b)
+Group.new("@markup.heading.2", c.light_yellow, c.none, b)
+Group.new("@markup.heading.3", c.light_blue, c.none, b)
+Group.new("@markup.heading.4", c.tea_green, c.none, b)
 -- literal text
 Group.new("@markup.raw", c.vivid_orange, c.none, i)
 -- any URI like a link or email
