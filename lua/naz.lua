@@ -221,6 +221,7 @@ Group.new("htmlArg", c.orange, c.none, no)
 Group.new("htmlSpecialChar", c.purple, c.none, no)
 
 -- https://github.com/nvim-treesitter/nvim-treesitter
+-- :h treesitter-highlight-groups
 
 -- for c++/dart attributes, annotations that can be attached to the code to
 -- denote some kind of meta information.
@@ -347,13 +348,13 @@ Group.link("@tag.delimiter", g.Delimiter)
 -- for strings considered text in a markup language
 Group.new("@text", c.white, c.none, no)
 -- for text to be represented in bold.
-Group.new("@text.strong", c.white_darker, c.none, b)
+Group.new("@markup.strong", c.orange, c.none, b)
 -- for text to be represented with emphasis
-Group.new("@text.emphasis", c.white, c.none, i)
+Group.new("@markup.emphasis", c.orange, c.none, i)
 -- for text to be represented with an underline
-Group.new("@text.underline", c.white, c.none, ul)
+Group.new("@markup.underline", c.white, c.none, ul)
 -- for strikethrough text
-Group.new("@text.strike", c.white, c.none, st)
+Group.new("@markup.strike", c.white, c.none, st)
 -- text that is part of a title
 Group.new("@text.title", c.very_light_orange, c.none, b)
 -- literal text
