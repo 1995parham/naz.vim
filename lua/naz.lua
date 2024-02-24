@@ -348,27 +348,27 @@ Group.link("@tag.delimiter", g.Delimiter)
 -- for strings considered text in a markup language
 Group.new("@text", c.white, c.none, no)
 -- for text to be represented in bold.
-Group.new("@markup.strong", c.orange, c.none, b)
+Group.new("@markup.strong", c.lightorange, c.none, b)
 -- for text to be represented with emphasis
-Group.new("@markup.emphasis", c.orange, c.none, i)
+Group.new("@markup.italic", c.lime_green, c.none, i)
 -- for text to be represented with an underline
 Group.new("@markup.underline", c.white, c.none, ul)
 -- for strikethrough text
 Group.new("@markup.strike", c.white, c.none, st)
 -- text that is part of a title
-Group.new("@text.title", c.very_light_orange, c.none, b)
+Group.new("@markup.header", c.very_light_orange, c.none, b)
 -- literal text
-Group.new("@text.literal", c.vivid_orange, c.none, i)
+Group.new("@markup.raw", c.vivid_orange, c.none, i)
 -- any URI like a link or email
-Group.new("@text.uri", c.lime_green, c.none, uc)
+Group.new("@markup.link", c.cyan, c.none, uc)
+Group.new("@markup.link.label", c.cyan, c.none, no)
+Group.new("@markup.link.url", c.cyan, c.none, uc)
 -- for LaTex-like math environments
-Group.new("@text.math", c.white, c.none, i)
+Group.new("@markup.math", c.white, c.none, i)
 -- for footnotes, text references, citations
-Group.new("@text.reference", c.orange, c.none, i)
+Group.new("@markup.quote", c.orange, c.none, i)
 -- for text environments of markup languages
-Group.new("@text.enviroment", c.white, c.none, no)
--- for the name/the string indicating the type of text environment
-Group.new("@text.enviroment.name", c.tomato, c.none, no)
+Group.new("@markup.enviroment", c.white, c.none, no)
 
 -- text representation of an informational note
 Group.new("@text.note", c.white, c.none, no)
