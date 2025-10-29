@@ -53,6 +53,45 @@ In general:
 
 Also, you can read more about it on `:h treesitter-highlight-groups`.
 
+### LSP Semantic Highlighting Support
+
+Naz theme includes comprehensive LSP semantic token support for enhanced syntax highlighting:
+
+**Type-related semantic tokens:**
+- `@lsp.type.class` - Classes (light orange)
+- `@lsp.type.interface` - Interfaces (linked to class)
+- `@lsp.type.enum` - Enumerations (lime green, italic)
+- `@lsp.type.struct` - Structs (aqua)
+- `@lsp.type.type` - Type aliases
+- `@lsp.type.typeParameter` - Generic type parameters (coral, italic)
+- `@lsp.type.enumMember` - Enum members (purple)
+
+**Function and method tokens:**
+- `@lsp.type.function` - Functions (blue)
+- `@lsp.type.method` - Methods (blue)
+
+**Variable tokens:**
+- `@lsp.type.variable` - Variables (vivid orange)
+- `@lsp.type.parameter` - Function parameters (pure pink)
+- `@lsp.type.property` - Object properties (orange)
+- `@lsp.type.namespace` - Namespaces (light yellow)
+
+**Modifier tokens:**
+- `@lsp.mod.readonly` - Readonly/const modifier (italic)
+- `@lsp.mod.deprecated` - Deprecated items (grey, strikethrough)
+- `@lsp.mod.static` - Static members (bold)
+- `@lsp.mod.abstract` - Abstract declarations (italic)
+- `@lsp.mod.defaultLibrary` - Standard library items (camel, bold)
+
+**Combined type+modifier tokens:**
+- `@lsp.typemod.function.defaultLibrary` - Standard library functions
+- `@lsp.typemod.method.defaultLibrary` - Standard library methods
+- `@lsp.typemod.variable.readonly` - Readonly/const variables (purple)
+- `@lsp.typemod.variable.defaultLibrary` - Standard library variables
+- `@lsp.typemod.parameter.readonly` - Const parameters (purple)
+
+To see semantic highlights in action, use `:Inspect` command while your cursor is on any token.
+
 ## Screenshots
 
 ### Go

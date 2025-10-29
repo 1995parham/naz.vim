@@ -42,7 +42,7 @@ Group.new("DiffDelete", c.black, c.delbg, no)
 -- diff mode: Changed text within a changed line
 Group.new("DiffText", c.black, c.aqua, no)
 -- filler lines (~) after the last line in the buffer
-Group.new("EndOfBuffer", c.black, c.none.no)
+Group.new("EndOfBuffer", c.black, c.none, no)
 -- error messages on the command line
 Group.new("ErrorMsg", c.black, c.red, no)
 -- the column separating vertically split windows
@@ -394,6 +394,43 @@ Group.link("@type.definition", g.Type)
 Group.new("@variable", c.vivid_orange, c.none, no)
 -- variable names that are defined by the languages, like `this` or `self`
 Group.new("@variable.builtin", c.camel, c.none, b)
+
+-- LSP Semantic Token Support
+-- :h lsp-semantic-highlight
+-- Use :Inspect to see what semantic highlights are being applied
+
+-- Type-related semantic tokens
+Group.link("@lsp.type.interface", g:__index("@lsp.type.class"))
+Group.new("@lsp.type.enum", c.lime_green, c.none, i)
+Group.new("@lsp.type.struct", c.aqua, c.none, no)
+Group.new("@lsp.type.typeParameter", c.coral, c.none, i)
+Group.new("@lsp.type.enumMember", c.purple, c.none, no)
+
+-- Variable-related semantic tokens
+Group.link("@lsp.type.variable", g:__index("@variable"))
+Group.link("@lsp.type.parameter", g:__index("@parameter"))
+
+-- Method semantic tokens (already covered by function but adding for clarity)
+Group.link("@lsp.type.method", g.Function)
+
+-- Decorator/Annotation semantic tokens
+Group.new("@lsp.type.decorator", c.pink, c.none, no)
+
+-- Modifier semantic tokens
+-- These add extra styling to tokens with modifiers
+Group.new("@lsp.mod.readonly", c.none, c.none, i)
+Group.new("@lsp.mod.deprecated", c.grey, c.none, st)
+Group.new("@lsp.mod.static", c.none, c.none, b)
+Group.new("@lsp.mod.abstract", c.none, c.none, i)
+Group.new("@lsp.mod.defaultLibrary", c.camel, c.none, b)
+
+-- Combined type and modifier highlights for common patterns
+-- These take precedence over individual type/mod highlights
+Group.new("@lsp.typemod.function.defaultLibrary", c.camel, c.none, b)
+Group.new("@lsp.typemod.method.defaultLibrary", c.camel, c.none, b)
+Group.new("@lsp.typemod.variable.readonly", c.purple, c.none, no)
+Group.new("@lsp.typemod.variable.defaultLibrary", c.camel, c.none, b)
+Group.new("@lsp.typemod.parameter.readonly", c.purple, c.none, no)
 
 Group.new("CmpItemAbbrDeprecated", c.grey, c.none, st)
 Group.new("CmpItemAbbrMatch", c.lime_green, c.none)
