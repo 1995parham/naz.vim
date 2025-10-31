@@ -21,3 +21,20 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           args: --check .
           version: latest
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable
+
+      - name: Test colorscheme
+        run: |
+          nvim --version
+          nvim --headless -u NONE -c "set runtimepath+=$(pwd)" -c "luafile tests/colorscheme_test.lua" -c "quit"
