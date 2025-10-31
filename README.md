@@ -14,23 +14,54 @@ Shahrak Dehkedeh, Farmarzieh, and Najaf Abad neighborhoods.
 ## Introduction
 
 Naz theme is based on the tomorrow night theme but more cute.
-It uses lua and [colorbuddy](https://github.com/tjdevries/colorbuddy.nvim) so it works with noevim 0.7.0+.
-Naz theme has binding for following plugins:
+It uses Neovim's native Lua API and works with Neovim 0.7.0+.
+Naz theme has bindings for following plugins:
 
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
 - [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
 ## Install
 
+### Using a plugin manager
+
+With [lazy.nvim](https://github.com/folke/lazy.nvim):
+
 ```lua
-plugin({
+{
   '1995parham/naz.vim',
-  branch = 'main',
+  lazy = false,
+  priority = 1000,
   config = function()
-    require('naz')
+    vim.cmd('colorscheme naz')
+  end,
+}
+```
+
+With [packer.nvim](https://github.com/wbthomason/packer.nvim):
+
+```lua
+use({
+  '1995parham/naz.vim',
+  config = function()
+    vim.cmd('colorscheme naz')
   end,
 })
+```
+
+### Manual installation
+
+Clone this repository into your Neovim configuration directory:
+
+```bash
+git clone https://github.com/1995parham/naz.vim ~/.config/nvim/colors/naz.vim
+```
+
+Then add to your `init.lua`:
+
+```lua
+vim.cmd('colorscheme naz')
 ```
 
 ## Where we can find colors?
@@ -58,6 +89,7 @@ Also, you can read more about it on `:h treesitter-highlight-groups`.
 Naz theme includes comprehensive LSP semantic token support for enhanced syntax highlighting:
 
 **Type-related semantic tokens:**
+
 - `@lsp.type.class` - Classes (light orange)
 - `@lsp.type.interface` - Interfaces (linked to class)
 - `@lsp.type.enum` - Enumerations (lime green, italic)
@@ -67,16 +99,19 @@ Naz theme includes comprehensive LSP semantic token support for enhanced syntax 
 - `@lsp.type.enumMember` - Enum members (purple)
 
 **Function and method tokens:**
+
 - `@lsp.type.function` - Functions (blue)
 - `@lsp.type.method` - Methods (blue)
 
 **Variable tokens:**
+
 - `@lsp.type.variable` - Variables (vivid orange)
 - `@lsp.type.parameter` - Function parameters (pure pink)
 - `@lsp.type.property` - Object properties (orange)
 - `@lsp.type.namespace` - Namespaces (light yellow)
 
 **Modifier tokens:**
+
 - `@lsp.mod.readonly` - Readonly/const modifier (italic)
 - `@lsp.mod.deprecated` - Deprecated items (grey, strikethrough)
 - `@lsp.mod.static` - Static members (bold)
@@ -84,6 +119,7 @@ Naz theme includes comprehensive LSP semantic token support for enhanced syntax 
 - `@lsp.mod.defaultLibrary` - Standard library items (camel, bold)
 
 **Combined type+modifier tokens:**
+
 - `@lsp.typemod.function.defaultLibrary` - Standard library functions
 - `@lsp.typemod.method.defaultLibrary` - Standard library methods
 - `@lsp.typemod.variable.readonly` - Readonly/const variables (purple)
@@ -91,17 +127,3 @@ Naz theme includes comprehensive LSP semantic token support for enhanced syntax 
 - `@lsp.typemod.parameter.readonly` - Const parameters (purple)
 
 To see semantic highlights in action, use `:Inspect` command while your cursor is on any token.
-
-## Screenshots
-
-### Go
-
-![python sample](screenshots/go.png)
-
-### NodeJS
-
-![nodejs sample](screenshots/nodejs.png)
-
-### Python
-
-![python sample](screenshots/python.png)
